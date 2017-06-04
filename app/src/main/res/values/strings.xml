@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Oh... Bhade Gadi</string>
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Welcome!</string>
+    <string name="slide_1_desc">Now gadi on your finger tip!</string>
+
+    <string name="slide_2_title"></string>
+    <string name="slide_2_desc">Now get your transport solution anywhere, anytime!</string>
+
+    <string name="slide_3_title"></string>
+    <string name="slide_3_desc">Get a solution for all your transport requirements. Ranging from luxury taxi to heavy loading vehicles</string>
+
+    <string name="slide_4_title"></string>
+    <string name="slide_4_desc">Search your suitable transport solution, get the best rate with us and enjoy your journey with us.</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+</resources>
