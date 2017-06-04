@@ -15,19 +15,30 @@
         android:layout_marginTop="60dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="-150dp"
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="-150dp"
-            android:src="@drawable/gif2" />
+            android:layout_marginBottom="-150dp"
+            android:src="@drawable/gif2"
+            android:background="@null"
+            />
+
+
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="-150dp"-->
+            <!--android:layout_marginTop="-150dp"-->
+            <!--android:src="@drawable/gif2" />-->
 
         <TextView
             android:layout_width="wrap_content"
