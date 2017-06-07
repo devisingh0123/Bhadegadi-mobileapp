@@ -37,10 +37,17 @@
             android:name=".ownerLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
-        <activity android:name=".ownerHistoryActivity"
+        <activity
+            android:name=".ownerHistoryActivity"
+            android:label="History"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:label="History"></activity>
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".showVehiclesActivity"
+            android:label="Vehicles"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".addVehicleDetailsActivity"></activity>
     </application>
 
 </manifest>

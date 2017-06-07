@@ -4,6 +4,8 @@
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
     <string name="slide_1_title">Welcome!</string>
     <string name="slide_1_desc">Now gadi on your finger tip!</string>
