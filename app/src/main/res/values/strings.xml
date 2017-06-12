@@ -21,4 +21,825 @@
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
+
+
+    <string-array name="vehicle_type">
+        <item>Select Vehicle Type*</item>
+        <item>Luxury Taxi</item>
+        <item>Loading Taxi</item>
+        <item>Heavy Vehicle</item>
+    </string-array>
+
+    <string-array name="company_default">
+        <item>Select Vehicle Company*</item>
+    </string-array>
+
+    <string-array name="model_default">
+        <item>Select Vehicle Model*</item>
+    </string-array>
+
+    <string-array name="luxury">
+        <item>Select Vehicle Company*</item>
+        <item>Maruti Suzuki</item>
+        <item>Tata</item>
+    </string-array>
+
+    <string-array name="heavy">
+        <item>Select Vehicle Company*</item>
+        <item>Tata </item>
+        <item>Ashok Leyland</item>
+        <item>Eicher</item>
+    </string-array>
+
+    <string-array name="tata_heavy">
+        <item>Select Vehicle Model*</item>
+        <item>model1</item>
+        <item>model2</item>
+    </string-array>
+
+    <string-array name="ashok">
+        <item>Select Vehicle Model*</item>
+        <item>model1</item>
+        <item>model2</item>
+    </string-array>
+
+    <string-array name="eicher">
+        <item>Select Vehicle Model*</item>
+        <item>model1</item>
+        <item>model2</item>
+    </string-array>
+
+    <string-array name="maruti">
+        <item>Select Vehicle Model*</item>
+        <item>Swift</item>
+        <item>Swift Dezire</item>
+    </string-array>
+
+    <string-array name="tata">
+        <item>Select Vehicle Model*</item>
+        <item>Indica</item>
+        <item>Indigo</item>
+    </string-array>
+
+
+    <string-array name="city_default">
+        <item>Select Service City*</item>
+    </string-array>
+
+    <string-array name="andra">
+        <item>Select Service City*</item>
+        <item>Visakhapatnam</item>
+        <item>Vijayawada</item>
+        <item>Guntur</item>
+        <item>Nellore</item>
+        <item>Kurnool</item>
+        <item>Kadapa</item>
+        <item>Rajahmundry</item>
+        <item>Kakinada</item>
+        <item>Tirupati</item>
+        <item>Anantapur</item>
+        <item>Vizianagaram</item>
+        <item>Eluru</item>
+        <item>Ongole</item>
+        <item>Nandyal</item>
+        <item>Machilipatnam</item>
+        <item>Adoni</item>
+        <item>Tenali</item>
+        <item>Proddatur</item>
+        <item>Chittoor</item>
+        <item>Hindupur</item>
+        <item>Bhimavaram</item>
+        <item>Madanapalle</item>
+        <item>Guntakal</item>
+        <item>Srikakulam</item>
+        <item>Dharmavaram</item>
+        <item>Gudivada</item>
+        <item>Narasaraopet</item>
+        <item>Tadipatri</item>
+        <item>Tadepalligudem</item>
+        <item>Amaravati</item>
+        <item>Chilakaluripet</item>
+    </string-array>
+
+
+    <string-array name="arunachal">
+        <item>Select Service City*</item>
+        <item>Changlang</item>
+        <item>Dibang Valley</item>
+        <item>East Kameng</item>
+        <item>East Siang</item>
+        <item>Kurung Kumey</item>
+        <item>Lohit</item>
+        <item>Lower Subansiri</item>
+        <item>Papum Pare</item>
+        <item>Tawang</item>
+        <item>Tirap</item>
+        <item>Upper Siang</item>
+        <item>Upper Subansiri</item>
+        <item>West Kameng</item>
+        <item>West Siang</item>
+        <item>Changlang</item>
+    </string-array>
+
+
+    <string-array name="assam">
+        <item>Select Service City*</item>
+        <item>Barpeta</item>
+        <item>Bongaigaon</item>
+        <item>Cachar</item>
+        <item>Darrang</item>
+        <item>Dhemaji</item>
+        <item>Dhubri</item>
+        <item>Dibrugarh</item>
+        <item>Goalpara</item>
+        <item>Golaghat</item>
+        <item>Hailakandi</item>
+        <item>Jorhat</item>
+        <item>Kamrup</item>
+        <item>Karbi Anglong</item>
+        <item>Karimganj</item>
+        <item>Kokrajhar</item>
+    </string-array>
+
+
+    <string-array name="bihar">
+        <item>Select Service City*</item>
+        <item>Patna</item>
+        <item>Gaya</item>
+        <item>Bhagalpur</item>
+        <item>Muzaffarpur</item>
+        <item>Purnea</item>
+        <item>Darbhanga</item>
+        <item>Bihar Sharif</item>
+        <item>Arrah</item>
+        <item>Begusarai</item>
+        <item>Katihar</item>
+        <item>Munger</item>
+        <item>Chhapra</item>
+        <item>Danapur</item>
+        <item>Bettiah</item>
+        <item>Saharsa</item>
+        <item>Sasaram</item>
+        <item>Hajipur</item>
+        <item>Dehri</item>
+        <item>Siwan</item>
+        <item>Motihari</item>
+        <item>Nawada</item>
+        <item>Bagaha</item>
+        <item>Buxar</item>
+        <item>Kishanganj</item>
+        <item>Sitamarhi</item>
+        <item>Jamalpur</item>
+        <item>Jehanabad</item>
+        <item>Aurangabad</item>
+    </string-array>
+
+
+    <string-array name="chhattisgarh">
+        <item>Select Service City*</item>
+        <item>Raipur</item>
+        <item>Durg - Bhilai</item>
+        <item>Bilaspur</item>
+        <item>Korba</item>
+        <item>Rajnandgaon</item>
+        <item>Raigarh</item>
+        <item>Jagdalpur</item>
+        <item>Ambikapur</item>
+        <item>Chirmiri</item>
+        <item>Pakhanjore</item>
+        <item>Dhamtari</item>
+        <item>Mahasamund</item>
+    </string-array>
+
+    <string-array name="goa">
+        <item>Select Service City*</item>
+        <item>Bicholim</item>
+        <item>Canacona</item>
+        <item>Cuncolim</item>
+        <item>Curchorem</item>
+        <item>Mapusa</item>
+        <item>Margao</item>
+        <item>Mormugao</item>
+        <item>Panaji</item>
+        <item>Pernem</item>
+        <item>Ponda</item>
+        <item>Quepem</item>
+        <item>Sanguem</item>
+        <item>Sanquelim</item>
+        <item>Valpoi</item>
+    </string-array>
+
+
+    <string-array name="Gujarat">
+        <item>Select Service City*</item>
+        <item>Ahmedabad</item>
+        <item>Surat</item>
+        <item>Vadodara</item>
+        <item>Rajkot</item>
+        <item>Bhavnagar</item>
+        <item>Jamnagar</item>
+        <item>Junagadh</item>
+        <item>Gandhidham</item>
+        <item>Nadiad</item>
+        <item>Gandhinagar</item>
+        <item>Anand</item>
+        <item>Morbi</item>
+        <item>Mehsana</item>
+        <item>Surendranagar</item>
+        <item>Bharuch</item>
+        <item>Vapi</item>
+        <item>Navsari</item>
+        <item>Veraval</item>
+        <item>Porbandar</item>
+        <item>Godhra</item>
+        <item>Bhuj</item>
+        <item>Ankleshwar</item>
+        <item>Botad</item>
+        <item>Palanpur</item>
+        <item>Patan</item>
+        <item>Dahod</item>
+        <item>Jetpur</item>
+        <item>Valsad</item>
+        <item>Kalol</item>
+        <item>Gondal</item>
+        <item>Amreli</item>
+    </string-array>
+
+    <string-array name="haryana">
+        <item>Select Service City*</item>
+        <item>Faridabad</item>
+        <item>Gurgaon</item>
+        <item>Panipat</item>
+        <item>Ambala</item>
+        <item>Yamunanagar</item>
+        <item>Rohtak</item>
+        <item>Hisar</item>
+        <item>Karnal</item>
+        <item>Sonipat</item>
+        <item>Panchkula</item>
+        <item>Bhiwani</item>
+        <item>Sirsa</item>
+        <item>Bahadurgarh</item>
+        <item>Jind</item>
+        <item>Thanesar</item>
+        <item>Kaithal</item>
+        <item>Rewari</item>
+        <item>Palwal</item>
+    </string-array>
+
+    <string-array name="himachal">
+        <item>Select Service City*</item>
+        <item>Bilaspur</item>
+        <item>Chamba</item>
+        <item>Hamirpur</item>
+        <item>Kangra</item>
+        <item>Kinnaur</item>
+        <item>Kullu</item>
+        <item>Lahaul and Spiti</item>
+        <item>Mandi</item>
+        <item>Shimla</item>
+        <item>Sirmaur</item>
+        <item>Solan</item>
+        <item>Una</item>
+    </string-array>
+
+    <string-array name="jk">
+        <item>Select Service City*</item>
+        <item>Anantnag</item>
+        <item>Badgam</item>
+        <item>Bandipore</item>
+        <item>Baramula</item>
+        <item>Doda</item>
+        <item>Ganderbal</item>
+        <item>Jammu</item>
+        <item>Kargil</item>
+        <item>Kathua</item>
+        <item>Kishtwar</item>
+        <item>Kulgam</item>
+        <item>Kupwara</item>
+        <item>Leh (Ladakh)</item>
+        <item>Pulwama</item>
+        <item>Punch</item>
+        <item>Rajouri</item>
+        <item>Ramban</item>
+        <item>Reasi</item>
+        <item>Samba</item>
+        <item>Shupiyan</item>
+        <item>Srinagar</item>
+        <item>Udhampur</item>
+    </string-array>
+
+
+    <string-array name="jharkhand">
+        <item>Select Service City*</item>
+        <item>Jamshedpur</item>
+        <item>Dhanbad</item>
+        <item>Ranchi</item>
+        <item>Bokaro</item>
+        <item>Deoghar</item>
+        <item>Phusro</item>
+        <item>Hazaribagh</item>
+        <item>Giridih</item>
+        <item>Ramgarh</item>
+        <item>Medininagar</item>
+        <item>Chirkunda</item>
+    </string-array>
+
+    <string-array name="karnataka">
+        <item>Select Service City*</item>
+        <item>Bagalkot</item>
+        <item>Bangalore</item>
+        <item>Belgaum</item>
+        <item>Bellary</item>
+        <item>Bidar</item>
+        <item>Bijapur</item>
+        <item>Chamarajanagar</item>
+        <item>Chikkaballapura</item>
+        <item>Chikmagalur</item>
+        <item>Chitradurga</item>
+        <item>Davanagere</item>
+        <item>Dharwad</item>
+        <item>Gadag</item>
+        <item>Gulbrga</item>
+        <item>Hassan</item>
+        <item>Haveri</item>
+        <item>Kodagu</item>
+        <item>Kolar</item>
+        <item>Koppal</item>
+        <item>Mandya</item>
+        <item>Mysore</item>
+        <item>Raichur</item>
+        <item>Ramanagara</item>
+        <item>Shimoga</item>
+        <item>Tumkur</item>
+        <item>Udupi</item>
+        <item>Yadgir</item>
+    </string-array>
+
+    <string-array name="Kerala">
+        <item>Select Service City*</item>
+        <item>Trivandrum</item>
+        <item>Kochi</item>
+        <item>Kozhikode</item>
+        <item>Quilon</item>
+        <item>Trichur</item>
+        <item>Alleppey</item>
+        <item>Palghat</item>
+        <item>Malappuram</item>
+        <item>Manjeri</item>
+        <item>Tellicherry</item>
+        <item>Ponnani</item>
+        <item>Vatakara</item>
+        <item>Kanhangad</item>
+        <item>Taliparamba</item>
+        <item>Payyanur</item>
+        <item>Koyilandy</item>
+        <item>Neyyattinkara</item>
+        <item>Beypore</item>
+        <item>Kayamkulam</item>
+        <item>Kannur</item>
+        <item>Nedumangad</item>
+        <item>Nilambur</item>
+        <item>Tirur</item>
+        <item>Kottayam</item>
+        <item>Nileshwaram</item>
+        <item>Kasaragod</item>
+        <item>Kunnamkulam</item>
+        <item>Ottappalam</item>
+        <item>Tiruvalla</item>
+        <item>Adoor</item>
+        <item>Perinthalmanna</item>
+        <item>Chalakkudy</item>
+        <item>Mattanur</item>
+        <item>Punalur</item>
+        <item>Kottarakara</item>
+        <item>Cherthala</item>
+        <item>Maradu</item>
+        <item>Kottakkal</item>
+        <item>Shornur</item>
+        <item>Kattappana</item>
+        <item>Manjeshwaram</item>
+        <item>Uppala</item>
+        <item>Pandalam</item>
+        <item>Varkala</item>
+        <item>Chavakkad</item>
+        <item>Mananthavady</item>
+        <item>Pathanamthitta</item>
+        <item>Attingal</item>
+        <item>Paravur</item>
+        <item>Ramanattukara</item>
+        <item>Kalamassery</item>
+    </string-array>
+
+    <string-array name="mp">
+        <item>Select Service City*</item>
+        <item>Indore</item>
+        <item>Bhopal</item>
+        <item>Jabalpur</item>
+        <item>Gwalior</item>
+        <item>Ujjain</item>
+        <item>Sagar</item>
+        <item>Dewas</item>
+        <item>Satna</item>
+        <item>Ratlam</item>
+        <item>Rewa</item>
+        <item>Murwara</item>
+        <item>Singrauli</item>
+        <item>Burhanpur</item>
+        <item>Khandwa</item>
+        <item>Bhind</item>
+        <item>Chhindwara</item>
+        <item>Guna</item>
+        <item>Shivpuri</item>
+        <item>Vidisha</item>
+        <item>Chhatarpur</item>
+        <item>Damoh</item>
+        <item>Mandsaur</item>
+        <item>Khargone</item>
+        <item>Neemuch</item>
+        <item>Pithampur</item>
+        <item>Hoshangabad</item>
+        <item>Itarsi</item>
+        <item>Sehore</item>
+        <item>Betul</item>
+        <item>Seoni</item>
+        <item>Datia</item>
+        <item>Nagda</item>
+    </string-array>
+
+    <string-array name="maharastra">
+        <item>Select Service City*</item>
+        <item>Mumbai</item>
+        <item>Pune</item>
+        <item>Nagpur</item>
+        <item>Thane</item>
+        <item>Nashik</item>
+        <item>Aurangabad</item>
+        <item>Solapur</item>
+        <item>Palghar</item>
+        <item>Amravati</item>
+        <item>Kolhapur</item>
+        <item>Akola</item>
+        <item>Dhule</item>
+        <item>Jalgaon</item>
+        <item>Nanded</item>
+        <item>Latur</item>
+        <item>Raigad</item>
+        <item>Sangli</item>
+        <item>Ahmednagar</item>
+        <item>Parbhani</item>
+        <item>Chandrapur</item>
+    </string-array>
+
+    <string-array name="manipur">
+        <item>Select Service City*</item>
+        <item>Bishnupur</item>
+        <item>Thoubal</item>
+        <item>Porompat</item>
+        <item>Lamphelpat</item>
+        <item>Senapati</item>
+        <item>Ukhrul</item>
+        <item>Chandel</item>
+        <item>Churachandpur</item>
+        <item>Tamenglong</item>
+        <item>Jiribam</item>
+        <item>Kangpokpi</item>
+        <item>Kakching</item>
+        <item>Tengnoupal</item>
+        <item>Kamjong</item>
+        <item>Noney</item>
+        <item>Pherzawl</item>
+    </string-array>
+
+    <string-array name="meghalaya">
+        <item>Select Service City*</item>
+        <item>Baghmara</item>
+        <item>Cherrapunjee</item>
+        <item>Jowai</item>
+        <item>Lawsohtun</item>
+        <item>Madanriting </item>
+        <item>Mairang</item>
+        <item>Mawlai</item>
+        <item>Mawpat</item>
+        <item>Nongkseh</item>
+        <item>Nongmynsong</item>
+        <item>Nongpoh</item>
+        <item>Nongstoin</item>
+        <item>Resubelpara</item>
+        <item>Shillong</item>
+        <item>Tura</item>
+        <item>Williamnagar</item>
+    </string-array>
+
+    <string-array name="nagaland">
+        <item>Select Service City*</item>
+        <item>Dimapur</item>
+        <item>Kiphire</item>
+        <item>Kohima</item>
+        <item>Longleng</item>
+        <item>Mokokchung</item>
+        <item>Mon</item>
+        <item>Peren</item>
+        <item>Phek</item>
+        <item>Tuensang</item>
+        <item>Wokha</item>
+        <item>Zunheboto</item>
+    </string-array>
+
+    <string-array name="Orissa">
+        <item>Select Service City*</item>
+        <item>Anugul</item>
+        <item>Balangir</item>
+        <item>Baleshwar</item>
+        <item>Bargarh</item>
+        <item>Baudh</item>
+        <item>Bhadrak</item>
+        <item>Cuttack</item>
+        <item>Debagarh</item>
+        <item>Dhenkanal</item>
+        <item>Gajapati</item>
+        <item>Ganjam</item>
+        <item>Jagatsinghapur</item>
+        <item>Jajapur</item>
+        <item>Jharsuguda</item>
+        <item>Kalahandi</item>
+        <item>Kandhamal</item>
+        <item>Kendrapara</item>
+        <item>Kendujhar</item>
+        <item>Khordha</item>
+        <item>Koraput</item>
+        <item>Malkangiri</item>
+        <item>Mayurbhanj</item>
+        <item>Nabarangpur</item>
+        <item>Nayagarh</item>
+        <item>Nuapada</item>
+        <item>Puri</item>
+        <item>Rayagada</item>
+        <item>Sambalpur</item>
+        <item>Subarnapur</item>
+        <item>Sundergarh</item>
+    </string-array>
+
+    <string-array name="Punjab">
+        <item>Select Service City*</item>
+        <item>Chandigarh</item>
+        <item>Ludhiana</item>
+        <item>Amritsar</item>
+        <item>Jalandhar</item>
+        <item>Patiala</item>
+        <item>Bathinda</item>
+        <item>Hoshiarpur</item>
+        <item>Mohali</item>
+        <item>Gurdaspur</item>
+        <item>Pathankot	</item>
+        <item>Moga</item>
+        <item>Fazilka</item>
+        <item>Sangrur</item>
+        <item>Kapurthala</item>
+        <item>Muktsar</item>
+        <item>Barnala</item>
+        <item>Firozpur</item>
+    </string-array>
+
+    <string-array name="Rajasthan">
+        <item>Select Service City*</item>
+        <item>Jaipur</item>
+        <item>Jodhpur</item>
+        <item>Kota</item>
+        <item>Bikaner</item>
+        <item>Ajmer</item>
+        <item>Udaipur</item>
+        <item>Bhilwara</item>
+        <item>Alwar</item>
+        <item>Bharatpur</item>
+        <item>Sikar</item>
+        <item>Sri Ganganagar</item>
+        <item>Pali</item>
+        <item>Chittorgarh</item>
+        <item>Tonk</item>
+        <item>Kishangarh</item>
+        <item>Beawar</item>
+        <item>Hanumangarh</item>
+        <item>Dholpur</item>
+        <item>Gangapur</item>
+        <item>Sawai Madhopur</item>
+        <item>Churu</item>
+        <item>Jhunjhunu</item>
+    </string-array>
+
+    <string-array name="Sikkim">
+        <item>Select Service City*</item>
+        <item>Gangtok</item>
+        <item>Mangan</item>
+        <item>Namchi</item>
+        <item>Geyzing</item>
+    </string-array>
+
+    <string-array name="tn">
+        <item>Select Service City*</item>
+        <item>Chennai</item>
+        <item>Coimbatore</item>
+        <item>Madurai</item>
+        <item>Tiruchirappalli</item>
+        <item>Tiruppur</item>
+        <item>Salem</item>
+        <item>Erode</item>
+        <item>Vellore</item>
+        <item>Tirunelveli</item>
+        <item>Thoothukkudi</item>
+        <item>Nagercoil</item>
+        <item>Thanjavur</item>
+        <item>Dindigul</item>
+        <item>Cuddalore</item>
+        <item>Kanchipuram</item>
+        <item>Tiruvannamalai</item>
+        <item>Kumbakonam</item>
+        <item>Rajapalayam</item>
+        <item>Pudukottai</item>
+        <item>Hosur</item>
+        <item>Ambur</item>
+        <item>Karaikkudi</item>
+        <item>Neyveli</item>
+        <item>Nagapattinam</item>
+    </string-array>
+
+    <string-array name="Telangana">
+        <item>Select Service City*</item>
+        <item>Hyderabad</item>
+        <item>Warangal</item>
+        <item>Nizamabad</item>
+        <item>Khammam</item>
+        <item>Karimnagar</item>
+        <item>Ramagundam</item>
+        <item>Mahbubnagar</item>
+        <item>Nalgonda</item>
+        <item>Adilabad</item>
+        <item>Siddipet</item>
+        <item>Miryalaguda</item>
+        <item>Suryapet</item>
+    </string-array>
+
+    <string-array name="Tripura">
+        <item>Select Service City*</item>
+        <item>Agartala</item>
+        <item>Amarpur</item>
+        <item>Belonia</item>
+        <item>Dharmanagar</item>
+        <item>Kailasahar</item>
+        <item>Kamalpur</item>
+        <item>Khowai</item>
+        <item>Kumarghat</item>
+        <item>Ranirbazar</item>
+        <item>Sabroom</item>
+        <item>Sonamura</item>
+        <item>Teliamura	</item>
+        <item>Udaipur</item>
+        <item>Bishalgarh</item>
+        <item>Ambassa</item>
+        <item>Santirbazar</item>
+        <item>Jirania</item>
+        <item>Melaghar</item>
+        <item>Mohanpur</item>
+        <item>Panisagar</item>
+    </string-array>
+
+    <string-array name="up">
+        <item>Select Service City*</item>
+        <item>Kanpur</item>
+        <item>Lucknow</item>
+        <item>Ghaziabad</item>
+        <item>Agra</item>
+        <item>Varanasi</item>
+        <item>Meerut</item>
+        <item>Allahabad</item>
+        <item>Bareilly</item>
+        <item>Aligarh</item>
+        <item>Moradabad</item>
+        <item>Saharanpur</item>
+        <item>Gorakhpur</item>
+        <item>Noida</item>
+        <item>Firozabad</item>
+        <item>Jhansi</item>
+        <item>Muzaffarnagar</item>
+        <item>Mathura</item>
+        <item>Rampur</item>
+        <item>Shahjahanpur</item>
+        <item>Farrukhabad</item>
+        <item>Hapur</item>
+        <item>Faizabad</item>
+        <item>Etawah</item>
+        <item>Mirzapur</item>
+    </string-array>
+
+
+    <string-array name="Uttarakhand">
+        <item>Select Service City*</item>
+        <item>Dehradun</item>
+        <item>Haridwar</item>
+        <item>Roorkee</item>
+        <item>Haldwani</item>
+        <item>Rudrapur</item>
+        <item>Kashipur</item>
+        <item>Rishikesh</item>
+        <item>Pithoragarh</item>
+        <item>Ramnagar</item>
+        <item>Kichha</item>
+        <item>Manglaur</item>
+        <item>Jaspur</item>
+        <item>Kotdwara</item>
+        <item>Nainital</item>
+        <item>Almora</item>
+        <item>Mussoorie</item>
+        <item>Sitarganj</item>
+        <item>Bazpur</item>
+        <item>Pauri</item>
+        <item>Tehri</item>
+        <item>Nagla</item>
+        <item>Laksar</item>
+        <item>Chamoli Gopeshwar</item>
+        <item>Umru Khurd</item>
+        <item>Srinagar</item>
+    </string-array>
+
+
+    <string-array name="Bengal">
+        <item>Select Service City*</item>
+        <item>Kolkata</item>
+        <item>Asansol</item>
+        <item>Siliguri</item>
+        <item>Durgapur</item>
+        <item>Bardhaman</item>
+        <item>Malda</item>
+        <item>Baharampur</item>
+        <item>Habra</item>
+        <item>Kharagpur</item>
+        <item>Shantipur</item>
+        <item>Dankuni</item>
+        <item>Dhulian</item>
+        <item>Ranaghat</item>
+        <item>Haldia</item>
+        <item>Raiganj</item>
+        <item>Krishnanagar</item>
+        <item>Nabadwip</item>
+        <item>Medinipur</item>
+        <item>Jalpaiguri</item>
+        <item>Balurghat</item>
+        <item>Basirhat</item>
+        <item>Bankura</item>
+        <item>Chakdaha</item>
+        <item>Darjeeling</item>
+        <item>Alipurduar</item>
+        <item>Purulia</item>
+        <item>Jangipur</item>
+        <item>Bangaon</item>
+        <item>Cooch Behar</item>
+    </string-array>
+
+    <string-array name="mizoram">
+        <item>Select Service City*</item>
+        <item>Aizawl</item>
+        <item>Champhai</item>
+        <item>Kolasib</item>
+        <item>Lawngtlai</item>
+        <item>Lunglei</item>
+        <item>Mamit</item>
+        <item>Saiha</item>
+        <item>Serchhip</item>
+    </string-array>
+
+
+    <string-array name="states">
+        <item>Select Service State*</item>
+        <item>Andra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chhattisgarh</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttar Pradesh</item>
+        <item>Uttarakhand</item>
+        <item>West Bengal</item>
+    </string-array>
+
+
 </resources>

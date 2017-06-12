@@ -45,10 +45,6 @@ public class ownerHistoryActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void addVehicle(View view) {
-//        Intent intent = new Intent(this, a)
-    }
-
 
 
     /* Menu onClick Functions */

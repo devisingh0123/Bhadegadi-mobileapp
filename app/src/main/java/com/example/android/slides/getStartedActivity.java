@@ -26,8 +26,14 @@ public class getStartedActivity extends AppCompatActivity {
 
         session = new sessionManager(this);
         if (!session.isFirstTimeLaunch()) {
-            goToHome();
-            finish();
+            if(session.getUSER_Type().equals("operator")) {
+                goToOperatorHome();
+                finish();
+            }
+            if(session.getUSER_Type().equals("customer")) {
+                goToUserHome();
+                finish();
+            }
         }
 
         Typeface montserrat = Typeface.createFromAsset(getAssets(),  "fonts/Montserrat-Light.otf");
@@ -41,14 +47,21 @@ public class getStartedActivity extends AppCompatActivity {
     }
 
 
+
     public void vehicleHome(View view)
     {
         Intent intent = new Intent(getStartedActivity.this, vehicleHomeActivity.class);
         startActivity(intent);
     }
 
-    public void goToHome() {
+    public void goToOperatorHome() {
         Intent intent = new Intent(getStartedActivity.this, ownerHistoryActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void goToUserHome() {
+        Intent intent = new Intent(getStartedActivity.this, userHomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

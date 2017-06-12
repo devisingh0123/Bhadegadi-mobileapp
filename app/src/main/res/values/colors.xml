@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#2169a4</color>
     <color name="colorAccent">#FF4081</color>
     <color name="hints">#ABC7E6</color>
+    <color name="hintsLightBg">#878787</color>
     <color name="greyBg">#EEEEEE</color>
 
     <!-- Screens background color-->

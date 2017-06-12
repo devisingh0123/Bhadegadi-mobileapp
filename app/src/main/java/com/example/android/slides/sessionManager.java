@@ -20,6 +20,8 @@ class sessionManager {
     private static final String PREF_NAME = "session";
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    private static final String USER_ID = "UserID";
+    private static final String USER_Type = "UserType";
 
     public sessionManager(Context context) {
         this._context = context;
@@ -32,8 +34,21 @@ class sessionManager {
         editor.commit();
     }
 
+
+    public void setUserId(String uid) {
+        editor.putString(USER_ID, uid);
+        editor.commit();
+    }
+
+    public void setUserType(String utype) {
+        editor.putString(USER_Type, utype);
+        editor.commit();
+    }
+
     public boolean isFirstTimeLaunch() {
         return session.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
+    public String getUserId() { return session.getString(USER_ID, "-1");}
+    public String getUSER_Type() { return session.getString(USER_Type, "NO");}
 
 }

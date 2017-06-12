@@ -1,9 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.DrawerLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.slides.addVehicleDetailsActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/greyBg"
+        tools:context="com.example.android.slides.ownerHistoryActivity">
+
+        <include layout="@layout/owner_nav_action"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </include>
+
+
+        <ScrollView
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="70dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+
+            <Spinner
+                android:layout_marginTop="20dp"
+                android:id="@+id/sp_vehicle_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+
+            <Spinner
+                android:layout_marginTop="20dp"
+                android:id="@+id/sp_vehicle_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+
+            <Spinner
+                android:layout_marginTop="20dp"
+                android:id="@+id/sp_vehicle_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+
+            <Spinner
+                android:id="@+id/sp_service_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+            </Spinner>
+
+            <Spinner
+                android:id="@+id/sp_service_city"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+
+
+            <EditText
+                android:id="@+id/et_pkm_charge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:hint="Per Km Charge*"
+                android:layout_marginTop="10dp"
+                android:textCursorDrawable="@null"
+                android:inputType="number"
+                android:textColorHint="@color/hintsLightBg"
+                android:backgroundTint="@color/hintsLightBg"
+                />
+
+
+            <EditText
+                android:id="@+id/et_night_allowance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:hint="Night Allowance"
+                android:inputType="number"
+                android:layout_marginTop="10dp"
+                android:textCursorDrawable="@null"
+                android:textColorHint="@color/hintsLightBg"
+                android:backgroundTint="@color/hintsLightBg"
+                />
+
+            <EditText
+                android:inputType="number"
+                android:id="@+id/et_day_allowance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:hint="Day Allowance"
+                android:layout_marginTop="10dp"
+                android:textCursorDrawable="@null"
+                android:textColorHint="@color/hintsLightBg"
+                android:backgroundTint="@color/hintsLightBg"
+                />
+
+
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:text="ADD VEHICLE"
+                android:onClick="addVehicle"
+                android:textSize="20sp"
+                android:layout_marginBottom="40dp"
+                android:textColor="@android:color/white"
+                android:background="@color/colorPrimary"/>
+
+
+
+
+        </LinearLayout>
+
+
+</ScrollView>
+
+        <ProgressBar
+            android:id="@+id/pb_add_vehicle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"
+            />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.design.widget.NavigationView
+        android:background="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:itemIconTint="@android:color/black"
+        app:itemTextColor="@android:color/black"
+        app:headerLayout="@layout/owner_nav_header"
+        app:menu="@menu/owner_menu"
+        android:layout_gravity="start">
+
+    </android.support.design.widget.NavigationView>
+
+
+
+</android.support.v4.widget.DrawerLayout>

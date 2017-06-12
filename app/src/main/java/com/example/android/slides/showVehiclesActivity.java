@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 public class showVehiclesActivity extends AppCompatActivity {
 
@@ -44,6 +45,13 @@ public class showVehiclesActivity extends AppCompatActivity {
     }
 
 
+    public void addVehicle(View view) {
+        Intent intent = new Intent(this, addVehicleDetailsActivity.class);
+        startActivity(intent);
+    }
+
+
+
     /* Menu onClick Functions */
 
 
@@ -58,6 +66,11 @@ public class showVehiclesActivity extends AppCompatActivity {
 
     public void vehicles(MenuItem item){
         Intent intent = new Intent(this, showVehiclesActivity.class);
+        startActivity(intent);
+    }
+
+    public void history(MenuItem item){
+        Intent intent = new Intent(this, ownerHistoryActivity.class);
         startActivity(intent);
     }
 

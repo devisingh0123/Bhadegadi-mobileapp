@@ -47,7 +47,13 @@
             android:label="Vehicles"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
-        <activity android:name=".addVehicleDetailsActivity"></activity>
+        <activity
+            android:name=".addVehicleDetailsActivity"
+            android:label="New Vehicle"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".userHomeActivity" />
+        <activity android:name=".uploadVehicleActivity"></activity>
     </application>
 
 </manifest>
