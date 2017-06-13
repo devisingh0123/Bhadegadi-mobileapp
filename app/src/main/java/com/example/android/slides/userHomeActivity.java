@@ -18,11 +18,5 @@ public class userHomeActivity extends AppCompatActivity {
     }
 
 
-    public void logout(View view){
-        session = new sessionManager(this);
-        session.setFirstTimeLaunch(true);
-        Intent intent = new Intent(this, ownerLoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
+   
 }

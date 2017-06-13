@@ -1,49 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/greyBg"
+        android:background="@color/colorPrimary"
         tools:context="com.example.android.slides.ownerHistoryActivity">
 
-        <include layout="@layout/owner_nav_action"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </include>
+
+
+
+
 
 
         <ScrollView
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
-            android:layout_marginTop="70dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" >
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:orientation="vertical"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:onClick="goback"
+                    android:src="@drawable/ic_arrow_back_white_24dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/colorPrimary"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="-50dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:text="Add new vehicle"/>
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/plus"/>
 
 
             <Spinner
                 android:layout_marginTop="20dp"
                 android:id="@+id/sp_vehicle_type"
+                android:backgroundTint="@color/hints"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </Spinner>
@@ -52,7 +79,11 @@
             <Spinner
                 android:layout_marginTop="20dp"
                 android:id="@+id/sp_vehicle_company"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="@color/hints"
                 android:layout_height="wrap_content">
             </Spinner>
 
@@ -60,7 +91,11 @@
             <Spinner
                 android:layout_marginTop="20dp"
                 android:id="@+id/sp_vehicle_model"
+                android:layout_marginRight="20dp"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_marginLeft="20dp"
                 android:layout_width="match_parent"
+                android:backgroundTint="@color/hints"
                 android:layout_height="wrap_content">
             </Spinner>
 
@@ -68,13 +103,21 @@
             <Spinner
                 android:id="@+id/sp_service_state"
                 android:layout_width="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:backgroundTint="@color/hints"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
             </Spinner>
 
             <Spinner
                 android:id="@+id/sp_service_city"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_marginTop="20dp"
+                android:backgroundTint="@color/hints"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </Spinner>
@@ -84,14 +127,19 @@
             <EditText
                 android:id="@+id/et_pkm_charge"
                 android:layout_width="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:hint="Per Km Charge*"
+                android:textSize="15dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:textCursorDrawable="@null"
                 android:inputType="number"
-                android:textColorHint="@color/hintsLightBg"
-                android:backgroundTint="@color/hintsLightBg"
+                android:textColorHint="@android:color/white"
+                android:backgroundTint="@color/hints"
                 />
 
 
@@ -99,13 +147,18 @@
                 android:id="@+id/et_night_allowance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
                 android:hint="Night Allowance"
+                android:paddingBottom="15dp"
                 android:inputType="number"
                 android:layout_marginTop="10dp"
                 android:textCursorDrawable="@null"
-                android:textColorHint="@color/hintsLightBg"
-                android:backgroundTint="@color/hintsLightBg"
+                android:textColorHint="@android:color/white"
+                android:backgroundTint="@color/hints"
                 />
 
             <EditText
@@ -113,12 +166,17 @@
                 android:id="@+id/et_day_allowance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
                 android:hint="Day Allowance"
+                android:paddingBottom="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:textCursorDrawable="@null"
-                android:textColorHint="@color/hintsLightBg"
-                android:backgroundTint="@color/hintsLightBg"
+                android:textColorHint="@android:color/white"
+                android:backgroundTint="@color/hints"
                 />
 
 
@@ -130,10 +188,12 @@
                 android:layout_marginTop="30dp"
                 android:text="ADD VEHICLE"
                 android:onClick="addVehicle"
-                android:textSize="20sp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="14sp"
                 android:layout_marginBottom="40dp"
                 android:textColor="@android:color/white"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorAccent"/>
 
 
 
@@ -145,8 +205,8 @@
 
         <ProgressBar
             android:id="@+id/pb_add_vehicle"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -157,19 +217,3 @@
 
     </android.support.constraint.ConstraintLayout>
 
-
-    <android.support.design.widget.NavigationView
-        android:background="@android:color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
-        app:headerLayout="@layout/owner_nav_header"
-        app:menu="@menu/owner_menu"
-        android:layout_gravity="start">
-
-    </android.support.design.widget.NavigationView>
-
-
-
-</android.support.v4.widget.DrawerLayout>

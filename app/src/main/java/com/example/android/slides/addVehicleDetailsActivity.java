@@ -26,9 +26,7 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
     String type, company, model, state, cities, userId;
     EditText perkm, night, day;
 
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle navToggle;
-    private Toolbar toolbar;
+
 
 
     @Override
@@ -367,26 +365,11 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
         });
 
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        navToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-
-        drawerLayout.addDrawerListener(navToggle);
-        navToggle.syncState();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(navToggle.onOptionsItemSelected(item)) { return true; }
-
-        return super.onOptionsItemSelected(item);
-    }
 
 
 
@@ -415,26 +398,10 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
 
     }
 
-
-        /* Menu onClick Functions */
-
-
-    public void logout(MenuItem item){
-        session = new sessionManager(this);
-        session.setFirstTimeLaunch(true);
-        Intent intent = new Intent(this, ownerLoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+    public void goback(View view) {
+        finish();
     }
 
 
-    public void vehicles(MenuItem item){
-        Intent intent = new Intent(this, showVehiclesActivity.class);
-        startActivity(intent);
-    }
 
-    public void history(MenuItem item){
-        Intent intent = new Intent(this, ownerHistoryActivity.class);
-        startActivity(intent);
-    }
 }
