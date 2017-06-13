@@ -1,12 +1,18 @@
 package com.example.android.slides;
 
+import android.app.DownloadManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
+import android.os.Message;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -18,6 +24,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,6 +34,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.nbsp.materialfilepicker.MaterialFilePicker;
+import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,6 +56,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import java.util.jar.Manifest;
+import java.util.logging.Handler;
+import java.util.regex.Pattern;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 
 public class uploadVehicleActivity extends AppCompatActivity {
 
@@ -59,16 +77,15 @@ public class uploadVehicleActivity extends AppCompatActivity {
     // Activity
     Button drivingLicense, vehicleImage, vehicleRc, InsuranceImage;
     int vehicleId;
-    String encoded_string, image_name, artifacttype;
-    Bitmap bitmap;
-    File file;
-    Uri file_uri;
+    String artifactType;
 
 
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        String s= getIntent().getExtras().getString("vehicleId");
+        String s= getIntent().getExtras().getString("vehicleId");
+
 
         session = new sessionManager(this);
         vehicleId = Integer.parseInt(session.getUserId());
@@ -100,120 +117,194 @@ public class uploadVehicleActivity extends AppCompatActivity {
         navToggle.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
+
+    private android.os.Handler handler = new android.os.Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            String status = msg.getData().getString("what");
+
+
+
+            Toast.makeText(uploadVehicleActivity.this, status, Toast.LENGTH_LONG).show();
+
+            if(status.equals("Upload Successful")) {
+
+                drivingLicense = (Button) findViewById(R.id.drivingLicense);
+                vehicleImage = (Button) findViewById(R.id.vehicleImage);
+                vehicleRc = (Button) findViewById(R.id.vehicleRc);
+                InsuranceImage = (Button) findViewById(R.id.insuranceImage);
+
+                if(artifactType.equals("DL")) {
+                    drivingLicense.setText("Uploaded");
+                }
+                if(artifactType.equals("VI")) {
+                    vehicleImage.setText("Uploaded");
+                }
+                if(artifactType.equals("RC")) {
+                    vehicleRc.setText("Uploaded");
+                }
+                if(artifactType.equals("II")) {
+                    InsuranceImage.setText("Uploaded");
+                }
+
+                if(drivingLicense.getText().equals("Uploaded") && vehicleImage.getText().equals("Uploaded") && vehicleRc.getText().equals("Uploaded") && InsuranceImage.getText().equals("Uploaded")) {
+
+                    Intent intent = new Intent(uploadVehicleActivity.this, showVehiclesActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+
+                }
+
+
+
+
+            }
+
+
+            Log.d("status Handler", status);
+
+        }
+    };
 
 
 
     /*  Button Click Events */
     public void uploadDrivingLicense(View view) {
-        artifacttype = "DL";
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        getFileUri();
-        i.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
-        startActivityForResult(i, 10);
+
+        artifactType = "DL";
+        new MaterialFilePicker()
+                .withActivity(this)
+                .withRequestCode(10)
+                .start();
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
+        if(requestCode == 10 && resultCode == RESULT_OK) {
+
+
+
+            pd = new ProgressDialog(this);
+            pd.setMessage("Please Wait");
+            pd.setTitle("Uploading Document");
+            pd.show();
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    File f = new File(data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH));
+                    fileupload(f);
+
+                }
+            }).start();
+        }
+    }
+
+    private void fileupload(File f) {
+        vehicleId = 7;
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("artifact", f.getName(),
+                        RequestBody.create(MediaType.parse("image/jpeg"),f))
+                .addFormDataPart("artifacttype", artifactType)
+                .addFormDataPart("vehicleId", Integer.toString(vehicleId))
+                .build();
+
+        okhttp3.Request request = new okhttp3.Request.Builder()
+                .url("http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/api/uploadArtifact")
+                .post(body)
+                .build();
+
+        try {
+            okhttp3.Response response =  client.newCall(request).execute();
+            Log.d("RESponse log",response.body().toString());
+
+            String jsonData = response.body().string();
+            try {
+
+
+                JSONObject Jobject = new JSONObject(jsonData);
+
+                String resultStatus = Jobject.getString("requstStatus");
+
+                if (resultStatus.equals("OK")) {
+                    Message msg = new Message();
+                    Bundle b = new Bundle();
+                    b.putString("what", "Upload Successful"); // for example
+                    msg.setData(b);
+                    handler.sendMessage(msg);
+                } else {
+                    Message msg = new Message();
+                    Bundle b = new Bundle();
+                    b.putString("what", "Upload Failed! Try Again"); // for example
+                    msg.setData(b);
+                    handler.sendMessage(msg);
+
+                }
+                pd.dismiss();
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /*  Button Click Events */
     public void uploadVehicleImage(View view) {
-        artifacttype = "VI";
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        getFileUri();
-        i.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
-        startActivityForResult(i, 10);
+        artifactType = "VI";
+        new MaterialFilePicker()
+                .withActivity(this)
+                .withRequestCode(10)
+                .start();
     }
 
 
     /*  Button Click Events */
     public void uploadVehicleRC(View view) {
-        artifacttype = "RC";
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        getFileUri();
-        i.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
-        startActivityForResult(i, 10);
+        artifactType = "RC";
+        new MaterialFilePicker()
+                .withActivity(this)
+                .withRequestCode(10)
+                .start();
+
     }
 
 
     /*  Button Click Events */
     public void uploadInsurance(View view) {
-        artifacttype = "II";
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        getFileUri();
-        i.putExtra(MediaStore.EXTRA_OUTPUT, file_uri);
-        startActivityForResult(i, 10);
-    }
+        artifactType = "II";
+        new MaterialFilePicker()
+                .withActivity(this)
+                .withRequestCode(10)
+                .start();
 
-    private void getFileUri() {
-        image_name = "15UsssC.jpg";
-        file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + image_name);
-
-        file_uri = Uri.fromFile(file);
-        Toast.makeText(this, file_uri.toString(), Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if(requestCode == 10 && resultCode == RESULT_OK) {
-            new Encode_Image().execute();
-        }
-
-
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-
-    private class Encode_Image extends AsyncTask<Void,Void,Void>{
-
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            bitmap = BitmapFactory.decodeFile(file_uri.getPath());
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
-
-            byte[] array = stream.toByteArray();
-            encoded_string = Base64.encodeToString(array,0);
-
-            Log.d("asdad", encoded_string);
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-//            makeRequest();
-        }
-    }
-
-
-    public void makeRequest() {
-        Log.d("called", "sdadasdasd");
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.0.2.2:8888/bhadeGadi/upload.php",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("encoded_string",encoded_string);
-                map.put("image_name",image_name);
-                map.put("vehicleId",Integer.toString(vehicleId));
-
-                return map;
-            }
-        };
-        requestQueue.add(request);
     }
 
 

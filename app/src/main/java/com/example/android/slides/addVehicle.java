@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +33,7 @@ public class addVehicle extends AsyncTask<String, Void, String> {
 
     Context context;
     private sessionManager session;
+    String vehicleID;
     addVehicle (Context ctx) {
         context = ctx;
     }
@@ -108,6 +110,8 @@ public class addVehicle extends AsyncTask<String, Void, String> {
                 try {
                     JSONObject j = new JSONObject(result);
                     line = j.getString("status");
+                    JSONArray resultList = j.getJSONArray("resultList");
+                    vehicleID = resultList.getJSONObject(0).getString("id");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -144,9 +148,8 @@ public class addVehicle extends AsyncTask<String, Void, String> {
         Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         ProgressBar progressBar = (ProgressBar) ((Activity)context).findViewById(R.id.pb_add_vehicle);
         progressBar.setVisibility(ProgressBar.INVISIBLE);
-        if(result.equals("Vehicle has been registered with system and under verification phase")){
-
-            Intent i = new Intent(context, uploadVehicleActivity.class);
+        if(result.equals("Vehicle has been registered with system  and under verification phase")){
+            Intent i = new Intent(context, uploadVehicleActivity.class).putExtra("vehicleId", vehicleID);
             context.startActivity(i);
         }
 
