@@ -83,7 +83,7 @@ public class ownerRegistrationActivity extends AppCompatActivity {
                         if (semail.matches(emailPattern)) {
                             String type = "register";
                             register reg = new register(this);
-                            reg.execute(type, sname, semail, sphone, spassword);
+                            reg.execute(type, sname, semail, sphone, spassword, "operator");
 
                         } else {
                             Toast.makeText(ownerRegistrationActivity.this, "Invalid email address", Toast.LENGTH_LONG).show();

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -34,6 +35,8 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vehicle_details);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         session = new sessionManager(this);
         userId = session.getUserId();
@@ -395,7 +398,6 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
         String perkmcharge = perkm.getText().toString();
         String nightallowance = night.getText().toString();
         String dayallowance = day.getText().toString();
-//        int userId = Integer.parseInt(session.getUserId());
 
 
         //Validation and Logic
@@ -407,72 +409,8 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
             add.execute(dayallowance, nightallowance, perkmcharge, userId, type, company, model, cities, state);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        if (sname.length() == 0 || sphone.length() == 0 || spassword.length() == 0 || scpassword.length() == 0) {
-//            Toast.makeText(ownerRegistrationActivity.this, "Please fill the form.",
-//                    Toast.LENGTH_LONG).show();
-//        } else if (spassword.equals(scpassword)) {
-//            if (spassword.length() >= 6) {
-//                if (sphone.matches(phonePattern)) {
-//                    if (semail.matches(emailPattern)) {
-//                        String type = "register";
-//                        register reg = new register(this);
-//                        reg.execute(type, sname, semail, sphone, spassword);
-//
-//                    } else {
-//                        Toast.makeText(ownerRegistrationActivity.this, "Invalid email address", Toast.LENGTH_LONG).show();
-//                    }
-//                } else {
-//                    Toast.makeText(ownerRegistrationActivity.this, "Invalid Phone Number", Toast.LENGTH_LONG).show();
-//
-//                }
-//
-//            } else {
-//                Toast.makeText(ownerRegistrationActivity.this,"Password is too short!", Toast.LENGTH_LONG).show();
-//
-//            }
-//
-//        } else {
-//
-//            Toast.makeText(ownerRegistrationActivity.this, "Password don't match!",
-//                    Toast.LENGTH_LONG).show();
-//
-//        }
-
-        // Insert Validation
-
-//        JSONObject addVehiceJson = new JSONObject();
-//
-//        try {
-//            addVehiceJson.put("dayallowance", dayallowance);
-//            addVehiceJson.put("nightallowance", nightallowance);
-//            addVehiceJson.put("perkmcharge", perkmcharge);
-//            addVehiceJson.put("userId", 15);
-//            addVehiceJson.put("vehicleCategory", type);
-//            addVehiceJson.put("vehicleCompany", company);
-//            addVehiceJson.put("vehicleModel", model);
-//            addVehiceJson.put("vehicleServiceClity", cities);
-//            addVehiceJson.put("vehicleServiceState", state);
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Toast.makeText(this, userId, Toast.LENGTH_LONG).show();
+//        Intent intent = new Intent(this, uploadVehicleActivity.class).putExtra("vehicleId", "7");
+//        startActivity(intent);
 
 
     }

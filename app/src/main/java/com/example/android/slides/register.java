@@ -54,6 +54,7 @@ class register extends AsyncTask<String, Void, String> {
                 String email = params[2];
                 String phone = params[3];
                 String password = params[4];
+                String userType = params[5];
 
                 JSONObject registerJson = new JSONObject();
 
@@ -73,7 +74,7 @@ class register extends AsyncTask<String, Void, String> {
                     registerJson.put("email", email);
                     registerJson.put("phone", phone);
                     registerJson.put("password", password);
-                    registerJson.put("userType", "operator");
+                    registerJson.put("userType", userType);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -104,7 +105,8 @@ class register extends AsyncTask<String, Void, String> {
 
                 try {
                     JSONObject j = new JSONObject(result);
-                    line = j.getString("requstStatus");
+//                    line = j.getString("requstStatus");
+                    line = j.toString();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -138,27 +140,47 @@ class register extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
+        String Usertype = "";
+        String uid = "";
+        String status = "";
 
         ProgressBar progressBar = (ProgressBar) ((Activity)context).findViewById(R.id.pb_register);
         progressBar.setVisibility(ProgressBar.INVISIBLE);
 
-        if (!TextUtils.isEmpty(result)){
+        try {
+            JSONObject results = new JSONObject(result);
+            status = results.getString("requstStatus");
+            JSONArray resultList = results.getJSONArray("resultList");
+            uid = resultList.getJSONObject(0).getString("id");
+            Usertype = resultList.getJSONObject(0).getString("userType");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+        if (!TextUtils.isEmpty(status)){
             Toast.makeText(context, "Successfully Registered",
                     Toast.LENGTH_LONG).show();
+            session = new sessionManager(context);
+            session.setFirstTimeLaunch(false);
+            session.setUserId(uid);
+            session.setUserType(Usertype);
+            if(Usertype.equals("operator")) {
+                Intent intent = new Intent(context, ownerHistoryActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                context.startActivity(intent);
+            }
+            if(Usertype.equals("customer")) {
+                Intent intent = new Intent(context, userHomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                context.startActivity(intent);
+            }
         } else {
             Toast.makeText(context, "Already user exist with phone or email, please try another",
                     Toast.LENGTH_LONG).show();
         }
 
-
-
-        if (!TextUtils.isEmpty(result)) {
-            session = new sessionManager(context);
-            session.setFirstTimeLaunch(false);
-            Intent intent = new Intent(context, ownerHistoryActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            context.startActivity(intent);
-        }
     }
 
     @Override

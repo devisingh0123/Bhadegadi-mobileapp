@@ -5,7 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.example.android.slides.ownerLoginActivity">
+    tools:context="com.example.android.slides.ownerRegistrationActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="30dp"
+        android:textSize="30sp"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -13,40 +26,48 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:orientation="vertical"
-        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp">
 
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_gravity="center"
-            android:layout_height="130dp"
-            android:layout_marginBottom="25dp"
-            android:src="@drawable/logo"/>
-
-        <TextView
-            android:id="@+id/tv_page_title"
+        <EditText
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:text="LOGIN"/>
+            android:hint="Full Name"
+            android:textCursorDrawable="@null"
+            android:textColorHint="@color/hints"
+            android:backgroundTint="@color/hints"/>
 
         <EditText
-            android:layout_marginTop="30dp"
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:hint="Email"
+            android:textCursorDrawable="@null"
+            android:textColorHint="@color/hints"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/hints"/>
+
+
+        <EditText
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:inputType="phone"
             android:hint="Phone"
+            android:inputType="phone"
+            android:digits="0123456789"
+            android:layout_marginTop="10dp"
             android:textCursorDrawable="@null"
             android:textColorHint="@color/hints"
             android:backgroundTint="@color/hints"/>
+
 
         <EditText
             android:id="@+id/et_password"
@@ -54,20 +75,33 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:hint="Password"
-            android:inputType="textPassword"
+            android:layout_marginTop="10dp"
             android:textCursorDrawable="@null"
             android:textColorHint="@color/hints"
+            android:backgroundTint="@color/hints"
+            android:inputType="textPassword"/>
+
+
+        <EditText
+            android:id="@+id/et_cpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:hint="Confirm Password"
             android:layout_marginTop="10dp"
-            android:backgroundTint="@color/hints"/>
+            android:textCursorDrawable="@null"
+            android:textColorHint="@color/hints"
+            android:backgroundTint="@color/hints"
+            android:inputType="textPassword"/>
 
 
         <Button
-            android:id="@+id/btn_signin"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="30dp"
-            android:text="LOGIN"
-            android:onClick="login"
+            android:text="REGISTER"
+            android:onClick="onRegister"
             android:textSize="20sp"
             android:textColor="@color/colorPrimary"
             android:background="@android:color/white"/>
@@ -86,20 +120,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-
         <TextView
-            android:id="@+id/tv_register_text"
+            android:id="@+id/tv_signin_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@android:color/white"
-            android:text="Don't have an account?"
+            android:text="Already have an account?"
             tools:layout_editor_absoluteY="0dp"
             tools:layout_editor_absoluteX="0dp" />
 
 
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_signin"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:textAllCaps="false"
@@ -107,16 +140,15 @@
             android:padding="0dp"
             android:textSize="20sp"
             android:layout_margin="0dp"
-            android:onClick="register"
             android:background="@null"
-            android:text="Register"
+            android:onClick="loginClicked"
+            android:text="Login"
             tools:layout_editor_absoluteY="8dp"
             tools:layout_editor_absoluteX="0dp" />
     </LinearLayout>
 
-
     <ProgressBar
-        android:id="@+id/pb_login"
+        android:id="@+id/pb_register"
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"

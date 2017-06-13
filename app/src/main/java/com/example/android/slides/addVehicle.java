@@ -39,11 +39,7 @@ public class addVehicle extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        session = new sessionManager(context);
-        if (!session.isFirstTimeLaunch()) {
-//            goToHome();
 
-        }
         String register_url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/api/addVehicle";
             try {
                 ArrayList<String> listItems = new ArrayList<String>();
@@ -111,7 +107,7 @@ public class addVehicle extends AsyncTask<String, Void, String> {
 
                 try {
                     JSONObject j = new JSONObject(result);
-                    line = j.toString();
+                    line = j.getString("status");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -148,7 +144,11 @@ public class addVehicle extends AsyncTask<String, Void, String> {
         Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         ProgressBar progressBar = (ProgressBar) ((Activity)context).findViewById(R.id.pb_add_vehicle);
         progressBar.setVisibility(ProgressBar.INVISIBLE);
+        if(result.equals("Vehicle has been registered with system and under verification phase")){
 
+            Intent i = new Intent(context, uploadVehicleActivity.class);
+            context.startActivity(i);
+        }
 
     }
 

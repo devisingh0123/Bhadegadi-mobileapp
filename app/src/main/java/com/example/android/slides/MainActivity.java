@@ -94,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
     }
 
     private void addBottomDots(int currentPage) {

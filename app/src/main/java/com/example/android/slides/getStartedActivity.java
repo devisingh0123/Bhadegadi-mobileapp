@@ -37,8 +37,9 @@ public class getStartedActivity extends AppCompatActivity {
         }
 
         Typeface montserrat = Typeface.createFromAsset(getAssets(),  "fonts/Montserrat-Light.otf");
+        Typeface comfortaa = Typeface.createFromAsset(getAssets(),  "fonts/Comfortaa-Regular.ttf");
         appTitle = (TextView) findViewById(R.id.tv_app_title);
-        appTitle.setTypeface(montserrat);
+        appTitle.setTypeface(comfortaa);
         Typeface gilroy = Typeface.createFromAsset(getAssets(),  "fonts/Gilroy-ExtraBold.otf");
         vehicleOwner = (Button) findViewById(R.id.btn_vehicle);
         getRide = (Button) findViewById(R.id.btn_getRide);
@@ -51,6 +52,12 @@ public class getStartedActivity extends AppCompatActivity {
     public void vehicleHome(View view)
     {
         Intent intent = new Intent(getStartedActivity.this, vehicleHomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void getRide(View view)
+    {
+        Intent intent = new Intent(getStartedActivity.this, customerLoginActivity.class);
         startActivity(intent);
     }
 
