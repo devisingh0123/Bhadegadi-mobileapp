@@ -145,13 +145,20 @@ public class addVehicle extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         ProgressBar progressBar = (ProgressBar) ((Activity)context).findViewById(R.id.pb_add_vehicle);
         progressBar.setVisibility(ProgressBar.INVISIBLE);
-        if(result.equals("Vehicle has been registered with system  and under verification phase")){
-            Intent i = new Intent(context, uploadVehicleActivity.class).putExtra("vehicleId", vehicleID);
-            context.startActivity(i);
+        if(result == null) {
+            Toast.makeText(context, "Please check your internet connection and try again.",
+                    Toast.LENGTH_LONG).show();
+
+        } else {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            if(result.equals("Vehicle has been registered with system  and under verification phase")){
+                Intent i = new Intent(context, uploadVehicleActivity.class).putExtra("vehicleId", vehicleID);
+                context.startActivity(i);
+            }
         }
+
 
     }
 

@@ -19,8 +19,9 @@ public class vehicleHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vehicle_home);
 
         Typeface montserrat = Typeface.createFromAsset(getAssets(),  "fonts/Montserrat-Regular.otf");
+        Typeface comfortaa = Typeface.createFromAsset(getAssets(),  "fonts/Comfortaa-Bold.ttf");
         appTitle = (TextView) findViewById(R.id.tv_app_title);
-        appTitle.setTypeface(montserrat);
+        appTitle.setTypeface(comfortaa);
 
         catchPhrase = (TextView) findViewById(R.id.tv_catch_phrase);
         Typeface gilroy = Typeface.createFromAsset(getAssets(),  "fonts/Gilroy-ExtraBold.otf");

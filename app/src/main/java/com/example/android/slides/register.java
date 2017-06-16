@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -87,6 +88,22 @@ class register extends AsyncTask<String, Void, String> {
                 bw.close();
                 outputStream.close();
 
+                int code = httpURLConnection.getResponseCode();
+                Log.d("Response", Integer.toString(code));
+
+                if(code != 200) {
+                    JSONObject alreadyUsed = new JSONObject();
+                    try {
+                        alreadyUsed.put("requstStatus", "");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Log.d("json", alreadyUsed.toString());
+
+                    return alreadyUsed.toString();
+                }
+
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
                 String result="";
@@ -107,6 +124,7 @@ class register extends AsyncTask<String, Void, String> {
                     JSONObject j = new JSONObject(result);
 //                    line = j.getString("requstStatus");
                     line = j.toString();
+                    Log.d("asdada", line);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -148,38 +166,57 @@ class register extends AsyncTask<String, Void, String> {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
 
         try {
-            JSONObject results = new JSONObject(result);
-            status = results.getString("requstStatus");
-            JSONArray resultList = results.getJSONArray("resultList");
-            uid = resultList.getJSONObject(0).getString("id");
-            Usertype = resultList.getJSONObject(0).getString("userType");
+            if(result != null) {
+                JSONObject results = new JSONObject(result);
+                Log.d("result", results.toString());
+
+                if (results.toString().equals("{\"requstStatus\":\"\"}")) {
+                    Toast.makeText(context, "Already user exist with phone or email, please try another",
+                            Toast.LENGTH_LONG).show();
+                }
+
+                status = results.getString("requstStatus");
+                Log.d("result2", status);
+
+                JSONArray resultList = results.getJSONArray("resultList");
+                uid = resultList.getJSONObject(0).getString("id");
+                Usertype = resultList.getJSONObject(0).getString("userType");
+
+                if (!TextUtils.isEmpty(status)){
+                    Toast.makeText(context, "Successfully Registered",
+                            Toast.LENGTH_LONG).show();
+                    session = new sessionManager(context);
+                    session.setFirstTimeLaunch(false);
+                    session.setUserId(uid);
+                    session.setUserType(Usertype);
+                    if(Usertype.equals("operator")) {
+                        Intent intent = new Intent(context, ownerHistoryActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        context.startActivity(intent);
+                    }
+                    if(Usertype.equals("customer")) {
+                        Intent intent = new Intent(context, userHomeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        context.startActivity(intent);
+                    }
+                } else {
+                    Toast.makeText(context, "Already user exist with phone or email, please try another",
+                            Toast.LENGTH_LONG).show();
+                }
+
+
+            } else {
+                Toast.makeText(context, "Please check your internet connection and try again.",
+                        Toast.LENGTH_LONG).show();
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
 
-        if (!TextUtils.isEmpty(status)){
-            Toast.makeText(context, "Successfully Registered",
-                    Toast.LENGTH_LONG).show();
-            session = new sessionManager(context);
-            session.setFirstTimeLaunch(false);
-            session.setUserId(uid);
-            session.setUserType(Usertype);
-            if(Usertype.equals("operator")) {
-                Intent intent = new Intent(context, ownerHistoryActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                context.startActivity(intent);
-            }
-            if(Usertype.equals("customer")) {
-                Intent intent = new Intent(context, userHomeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                context.startActivity(intent);
-            }
-        } else {
-            Toast.makeText(context, "Already user exist with phone or email, please try another",
-                    Toast.LENGTH_LONG).show();
-        }
+
+
 
     }
 

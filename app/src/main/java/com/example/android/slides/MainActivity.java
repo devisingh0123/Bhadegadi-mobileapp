@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
 
-        Typeface montserrat = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Light.otf");
+        Typeface Comfortaa = Typeface.createFromAsset(getAssets(), "fonts/Comfortaa-Bold.ttf");
+
+
+
+
 
 
         // layouts of all welcome sliders
@@ -94,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
 
 
 

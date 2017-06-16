@@ -20,6 +20,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="17dp"
+        android:layout_marginTop="70dp"
+        android:text="Vehicle Owner"/>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -115,7 +127,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:minHeight="50dp"
-        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -149,8 +160,8 @@
 
     <ProgressBar
         android:id="@+id/pb_register"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

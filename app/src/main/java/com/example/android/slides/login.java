@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -32,8 +35,9 @@ import java.util.ArrayList;
 
 class login extends AsyncTask<String, Void, String> {
 
-    Context context;
+
     AlertDialog alertDialog;
+    Context context;
     String uid;
     private sessionManager session;
     login (Context ctx) {
@@ -42,6 +46,11 @@ class login extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
+
+
+
+
+
         String type = params[0];
         String register_url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/api/doLogin";
         if (type.equals("login")) {
@@ -55,6 +64,7 @@ class login extends AsyncTask<String, Void, String> {
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setConnectTimeout(15000);
                 httpURLConnection.setRequestProperty("Content-Type", "application/json");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
@@ -111,6 +121,10 @@ class login extends AsyncTask<String, Void, String> {
             }
         }
 
+
+
+
+
         return null;
     }
 
@@ -132,18 +146,28 @@ class login extends AsyncTask<String, Void, String> {
 
 
         try {
-            JSONObject results = new JSONObject(result);
-            status = results.getString("status");
-            JSONArray resultList = results.getJSONArray("resultList");
-            uid = resultList.getJSONObject(0).getString("id");
-            Usertype = resultList.getJSONObject(0).getString("userType");
+            if(result != null) {
+                JSONObject results = new JSONObject(result);
+                status = results.getString("status");
+                JSONArray resultList = results.getJSONArray("resultList");
+                uid = resultList.getJSONObject(0).getString("id");
+                Usertype = resultList.getJSONObject(0).getString("userType");
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        if(result == null) {
+            Toast.makeText(context, "Please check your internet connection and try again.",
+                    Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(context, status,
+                    Toast.LENGTH_LONG).show();
+        }
 
-        Toast.makeText(context, status,
-                Toast.LENGTH_LONG).show();
+
+
         if (status.equals("Successfully login validated")) {
             session = new sessionManager(context);
             session.setFirstTimeLaunch(false);
@@ -166,4 +190,5 @@ class login extends AsyncTask<String, Void, String> {
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
     }
+
 }
