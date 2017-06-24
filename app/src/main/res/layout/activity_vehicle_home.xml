@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
 
-    tools:context="com.example.android.slides.vehicleHomeActivity">
+    tools:context="in.shreesaiconsultancy.android.obhadegadi.vehicleHomeActivity">
 
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.slides">
+    package="in.shreesaiconsultancy.android.obhadegadi">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2">
             <intent-filter>
@@ -29,53 +29,62 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".getStartedActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.getStartedActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".vehicleHomeActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.vehicleHomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".ownerRegistrationActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.ownerRegistrationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".ownerLoginActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.ownerLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".ownerHistoryActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.ownerHistoryActivity"
             android:label="History"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".showVehiclesActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.showVehiclesActivity"
             android:label="Vehicles"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".addVehicleDetailsActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.addVehicleDetailsActivity"
             android:label="New Vehicle"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".userHomeActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.userHomeActivity"
             android:label="Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".uploadVehicleActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.uploadVehicleActivity"
             android:label="Upload Documents"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".customerLoginActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.customerLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".cutomerRegisterActivity"
+            android:name="in.shreesaiconsultancy.android.obhadegadi.cutomerRegisterActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name="in.shreesaiconsultancy.android.obhadegadi.vehicleDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name="in.shreesaiconsultancy.android.obhadegadi.searchVehicleActivity"
+            android:screenOrientation="portrait"
+            android:label="Get a ride"
             android:theme="@style/AppTheme2"></activity>
     </application>
 

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/greyBg"
-        tools:context="com.example.android.slides.ownerHistoryActivity">
+        tools:context="in.shreesaiconsultancy.android.obhadegadi.uploadVehicleActivity">
 
         <include layout="@layout/owner_nav_action"
             android:layout_width="0dp"

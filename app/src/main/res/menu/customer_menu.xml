@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_history"
+        android:icon="@mipmap/search_car"
+        android:onClick="search_vehicles"
+        android:title="Get a ride"/>
+    <item
+        android:id="@+id/action_vehicles"
+        android:onClick="history"
+        android:icon="@mipmap/ic_history_black_24dp"
+        android:title="History"/>
+    <item
+        android:id="@+id/action_support"
+        android:icon="@mipmap/ic_sms_black_24dp"
+        android:title="Support"/>
+    <item
+        android:id="@+id/action_about"
+        android:icon="@mipmap/ic_info_black_24dp"
+        android:title="About"/>
+    <item
+        android:id="@+id/action_logout"
+        android:onClick="logout"
+        android:icon="@mipmap/ic_vpn_key_black_24dp"
+        android:title="Log out"/>
+    
+</menu>
