@@ -33,8 +33,8 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
 
 
         perkm = (EditText) findViewById(R.id.et_pkm_charge);
-        night = (EditText) findViewById(R.id.et_night_allowance);
-        day = (EditText) findViewById(R.id.et_day_allowance);
+//        night = (EditText) findViewById(R.id.et_night_allowance);
+//        day = (EditText) findViewById(R.id.et_day_allowance);
 
 
         vehicleType = (Spinner) findViewById(R.id.sp_vehicle_type);
@@ -371,13 +371,15 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
     public void addVehicle(View view) {
 
         String perkmcharge = perkm.getText().toString();
-        String nightallowance = night.getText().toString();
-        String dayallowance = day.getText().toString();
+//        String nightallowance = night.getText().toString();
+        String nightallowance = "1";
+//        String dayallowance = day.getText().toString();
+        String dayallowance = "1";
 
 
         //Validation and Logic
 
-        if(perkmcharge.length() == 0 || nightallowance.length() == 0 || dayallowance.length() == 0 || type.equals("Select Vehicle Type*") || company.equals("Select Vehicle Company*") || model.equals("Select Vehicle Model*") || cities.equals("Select Vehicle City*") || state.equals("Select Vehicle State*")) {
+        if(perkmcharge.length() == 0 || type.equals("Select Vehicle Type*") || company.equals("Select Vehicle Company*") || model.equals("Select Vehicle Model*") || cities.equals("Select Vehicle City*") || state.equals("Select Vehicle State*")) {
             Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_LONG).show();
         } else {
             addVehicle add = new addVehicle(this);
