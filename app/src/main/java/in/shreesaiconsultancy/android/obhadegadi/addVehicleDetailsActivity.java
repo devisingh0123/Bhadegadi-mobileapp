@@ -76,7 +76,7 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
 
                 // Loading Taxi
                 if (parent.getItemAtPosition(position).equals("Loading Taxi")) {
-                    adapterVCompany = ArrayAdapter.createFromResource(getBaseContext(), R.array.company_default, R.layout.spinner_layout);
+                    adapterVCompany = ArrayAdapter.createFromResource(getBaseContext(), R.array.loading_taxi, R.layout.spinner_layout);
 
                 }
 
@@ -110,31 +110,169 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
                     adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.model_default, R.layout.spinner_layout);
                 }
 
-                // Maruti Suzuki
+                // Vehicle luxury
+
+                //Maruti Suzuki
                 if (parent.getItemAtPosition(position).equals("Maruti Suzuki")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Maruti_Suzuki, R.layout.spinner_layout); }
+
+//Hyundai
+                if (parent.getItemAtPosition(position).equals("Hyundai")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Hyundai, R.layout.spinner_layout); }
+
+//Volkswagen
+                if (parent.getItemAtPosition(position).equals("Volkswagen")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Volkswagen, R.layout.spinner_layout); }
+
+//Toyota
+                if (parent.getItemAtPosition(position).equals("Toyota")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Toyota, R.layout.spinner_layout); }
+
+//Honda
+                if (parent.getItemAtPosition(position).equals("Honda")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Honda, R.layout.spinner_layout); }
+
+//Ford
+                if (parent.getItemAtPosition(position).equals("Ford")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Ford, R.layout.spinner_layout); }
+
+//Tata
+                if(type.equals("Luxury Taxi")) {
+                    if (company.equals("Tata")) {
+                        adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Tata, R.layout.spinner_layout);
+                    }
+                }
+//Nissan
+                if (parent.getItemAtPosition(position).equals("Nissan")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Nissan, R.layout.spinner_layout); }
+
+//Mahindra
+                if (parent.getItemAtPosition(position).equals("Mahindra")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Mahindra, R.layout.spinner_layout); }
+
+                // Datsun
+                if (parent.getItemAtPosition(position).equals("Datsun")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Datsun, R.layout.spinner_layout); }
+
+//Renault
+                if (parent.getItemAtPosition(position).equals("Renault")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Renault, R.layout.spinner_layout); }
+
+//Audi
+                if (parent.getItemAtPosition(position).equals("Audi")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Audi, R.layout.spinner_layout); }
+
+//BMW
+                if (parent.getItemAtPosition(position).equals("BMW")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.BMW, R.layout.spinner_layout); }
+
+//Mercedes Benz
+                if (parent.getItemAtPosition(position).equals("Mercedes Benz")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Mercedes_Benz, R.layout.spinner_layout); }
+
+//Skoda
+                if (parent.getItemAtPosition(position).equals("Skoda")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Skoda, R.layout.spinner_layout); }
+
+//Chevrolet
+                if (parent.getItemAtPosition(position).equals("Chevrolet")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Chevrolet, R.layout.spinner_layout); }
+
+//Aston Martin
+                if (parent.getItemAtPosition(position).equals("Aston Martin")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Aston_Martin, R.layout.spinner_layout); }
+
+//Fiat
+                if (parent.getItemAtPosition(position).equals("Fiat")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Fiat, R.layout.spinner_layout); }
+
+//Force Motors
+                if (parent.getItemAtPosition(position).equals("Force Motors")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Force_Motors, R.layout.spinner_layout); }
+
+//Isuzu
+                if (parent.getItemAtPosition(position).equals("Isuzu")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Isuzu, R.layout.spinner_layout); }
+
+//Jaguar
+                if (parent.getItemAtPosition(position).equals("Jaguar")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Jaguar, R.layout.spinner_layout); }
+
+//Land Rover
+                if (parent.getItemAtPosition(position).equals("Land Rover")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Land_Rover, R.layout.spinner_layout); }
+
+//Mitsubishi
+                if (parent.getItemAtPosition(position).equals("Mitsubishi")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Mitsubishi, R.layout.spinner_layout); }
+
+//Porsche
+                if (parent.getItemAtPosition(position).equals("Porsche")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Porsche, R.layout.spinner_layout); }
+
+//Rolls Royce
+                if (parent.getItemAtPosition(position).equals("Rolls Royce")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Rolls_Royce, R.layout.spinner_layout); }
+
+//Volvo
+                if (parent.getItemAtPosition(position).equals("Volvo")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.Volvo, R.layout.spinner_layout); }
+
+
+
+                // Tata Loading
+                if(type.equals("Loading Taxi")) {
+                    if (parent.getItemAtPosition(position).equals("Tata")) {
+                        adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.tata_loading, R.layout.spinner_layout);
+                    }
+                }
+
+                // Bajaj
+                if (parent.getItemAtPosition(position).equals("Bajaj")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.bajaj, R.layout.spinner_layout);
+                }
+
+                // Atul
+                if (parent.getItemAtPosition(position).equals("Atul")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.atul, R.layout.spinner_layout);
+                }
+
+                // Mahindra Loading
+                if(type.equals("Loading Taxi")) {
+                    if (parent.getItemAtPosition(position).equals("Mahindra")) {
+                        adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.mahindra, R.layout.spinner_layout);
+                    }
+                }
+
+                // SML Isuzu
+                if (parent.getItemAtPosition(position).equals("SML Isuzu")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.sml_isuzu, R.layout.spinner_layout);
+                }
+
+                // Piaggio
+                if (parent.getItemAtPosition(position).equals("Piaggio")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.piaggio, R.layout.spinner_layout);
+                }
+
+                // maruti loading
+                if (parent.getItemAtPosition(position).equals("Maruti")) {
                     adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.maruti, R.layout.spinner_layout);
                 }
 
-                // Tata
-                if (parent.getItemAtPosition(position).equals("Tata")) {
-                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.tata, R.layout.spinner_layout);
+
+                if (parent.getItemAtPosition(position).equals("AMW")) {
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.amw, R.layout.spinner_layout);
                 }
 
-                // Maruti Suzuki
-                if (parent.getItemAtPosition(position).equals("Tata ")) {
-                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.tata_heavy, R.layout.spinner_layout);
-                }
-
-                // Tata
                 if (parent.getItemAtPosition(position).equals("Ashok Leyland")) {
-                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.ashok, R.layout.spinner_layout);
+                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.ashok_leyland, R.layout.spinner_layout);
                 }
 
-                // Eicher
-                if (parent.getItemAtPosition(position).equals("Eicher")) {
-                    adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.eicher, R.layout.spinner_layout);
+                if(type.equals("Heavy Vehicle")) {
+                    if (parent.getItemAtPosition(position).equals("Tata")) {
+                        adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.tata_heavy, R.layout.spinner_layout);
+                    }
                 }
-
 
                 adapterVModel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 vehicleModel.setAdapter(adapterVModel);
@@ -379,7 +517,12 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
 
         //Validation and Logic
 
-        if(perkmcharge.length() == 0 || type.equals("Select Vehicle Type*") || company.equals("Select Vehicle Company*") || model.equals("Select Vehicle Model*") || cities.equals("Select Vehicle City*") || state.equals("Select Vehicle State*")) {
+        if(perkmcharge.length() == 0
+                || type.equals("Select Vehicle Type*")
+                || company.equals("Select Vehicle Company*")
+                || model.equals("Select Vehicle Model*")
+                || cities.equals("Select Vehicle City*")
+                || state.equals("Select Vehicle State*")) {
             Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_LONG).show();
         } else {
             addVehicle add = new addVehicle(this);

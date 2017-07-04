@@ -38,49 +38,6 @@
         <item>Select Vehicle Model*</item>
     </string-array>
 
-    <string-array name="luxury">
-        <item>Select Vehicle Company*</item>
-        <item>Maruti Suzuki</item>
-        <item>Tata</item>
-    </string-array>
-
-    <string-array name="heavy">
-        <item>Select Vehicle Company*</item>
-        <item>Tata </item>
-        <item>Ashok Leyland</item>
-        <item>Eicher</item>
-    </string-array>
-
-    <string-array name="tata_heavy">
-        <item>Select Vehicle Model*</item>
-        <item>model1</item>
-        <item>model2</item>
-    </string-array>
-
-    <string-array name="ashok">
-        <item>Select Vehicle Model*</item>
-        <item>model1</item>
-        <item>model2</item>
-    </string-array>
-
-    <string-array name="eicher">
-        <item>Select Vehicle Model*</item>
-        <item>model1</item>
-        <item>model2</item>
-    </string-array>
-
-    <string-array name="maruti">
-        <item>Select Vehicle Model*</item>
-        <item>Swift</item>
-        <item>Swift Dezire</item>
-    </string-array>
-
-    <string-array name="tata">
-        <item>Select Vehicle Model*</item>
-        <item>Indica</item>
-        <item>Indigo</item>
-    </string-array>
-
 
     <string-array name="city_default">
         <item>Select Service City*</item>

@@ -1,9 +1,14 @@
 package in.shreesaiconsultancy.android.obhadegadi;
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -14,11 +19,14 @@ import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +39,14 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -46,6 +61,10 @@ public class uploadVehicleActivity extends AppCompatActivity {
     private ActionBarDrawerToggle navToggle;
     private Toolbar toolbar;
     Bitmap yourSelectedImage;
+    boolean isKitKat = false;
+    String userId;
+    String realPath_1;
+    private Uri cameraPictureUrl;
 
     // Activity
     Button drivingLicense, vehicleImage, vehicleRc, InsuranceImage;
@@ -63,12 +82,14 @@ public class uploadVehicleActivity extends AppCompatActivity {
         session = new sessionManager(this);
         vehicleId = Integer.parseInt(s);
 
+        userId = session.getUserId();
 
-                /******** Uploads **********/
+
+        /******** Uploads **********/
         drivingLicense = (Button) findViewById(R.id.drivingLicense);
         vehicleImage = (Button) findViewById(R.id.vehicleImage);
         vehicleRc = (Button) findViewById(R.id.vehicleRc);
-        InsuranceImage = (Button) findViewById(R.id.insuranceImage);
+//        InsuranceImage = (Button) findViewById(R.id.insuranceImage);
 
 
 
@@ -106,6 +127,9 @@ public class uploadVehicleActivity extends AppCompatActivity {
     }
 
 
+
+
+
     private android.os.Handler handler = new android.os.Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -120,7 +144,7 @@ public class uploadVehicleActivity extends AppCompatActivity {
                 drivingLicense = (Button) findViewById(R.id.drivingLicense);
                 vehicleImage = (Button) findViewById(R.id.vehicleImage);
                 vehicleRc = (Button) findViewById(R.id.vehicleRc);
-                InsuranceImage = (Button) findViewById(R.id.insuranceImage);
+//                InsuranceImage = (Button) findViewById(R.id.insuranceImage);
 
                 if(artifactType.equals("DL")) {
                     drivingLicense.setText("Uploaded");
@@ -131,11 +155,11 @@ public class uploadVehicleActivity extends AppCompatActivity {
                 if(artifactType.equals("RC")) {
                     vehicleRc.setText("Uploaded");
                 }
-                if(artifactType.equals("II")) {
-                    InsuranceImage.setText("Uploaded");
-                }
+//                if(artifactType.equals("II")) {
+//                    InsuranceImage.setText("Uploaded");
+//                }
 
-                if(drivingLicense.getText().equals("Uploaded") && vehicleImage.getText().equals("Uploaded") && vehicleRc.getText().equals("Uploaded") && InsuranceImage.getText().equals("Uploaded")) {
+                if(drivingLicense.getText().equals("Uploaded") && vehicleImage.getText().equals("Uploaded") && vehicleRc.getText().equals("Uploaded")) {
 
                     Intent intent = new Intent(uploadVehicleActivity.this, showVehiclesActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -160,25 +184,64 @@ public class uploadVehicleActivity extends AppCompatActivity {
     public void uploadDrivingLicense(View view) {
 
         artifactType = "DL";
-        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-        i.setType("image/jpeg");
-        startActivityForResult(i, 10);
+
+
+            final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Driving Licence!");
+            builder.setItems(options, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    if (options[which].equals("Take Photo")) {
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                        cameraPictureUrl = createImageUri();
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, cameraPictureUrl);
+                        startActivityForResult(intent, 11);
+                    } else if (options[which].equals("Choose from Gallery")) {
+                        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                        i.setType("image/jpeg");
+                        startActivityForResult(i, 10);
+
+                    } else if (options[which].equals("Cancel")) {
+                        dialog.dismiss();
+                    }
+
+                }
+
+            });
+
+
+            builder.show();
 
 
 
     }
 
 
+    private Uri createImageUri() {
+                ContentResolver contentResolver = getContentResolver();
+            ContentValues cv = new ContentValues();
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        cv.put(MediaStore.Images.Media.TITLE, "temp");
+              return contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+    }
+
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
-        
+
         try {
             if (requestCode == 10 && resultCode == RESULT_OK) {
 
 
                 final File file;
 
-                        Uri uri = data.getData();
+                Uri uri = data.getData();
 //                final String path = getRealPathFromURI(uri);
                 final String path;
 
@@ -187,13 +250,15 @@ public class uploadVehicleActivity extends AppCompatActivity {
 //                    filename = FilenameUtils.getName(uri.toString());
                     Toast.makeText(this, "Error selecting file.", Toast.LENGTH_SHORT).show();
                 } else {
-                   File file2 = new File(path);
+                    File file2 = new File(path);
                     file = file2;
                 }
 
                 pd = new ProgressDialog(this);
                 pd.setMessage("Please Wait");
                 pd.setTitle("Uploading Document");
+                pd.setCancelable(false);
+                pd.setCanceledOnTouchOutside(false);
                 pd.show();
 
                 new Thread(new Runnable() {
@@ -215,10 +280,77 @@ public class uploadVehicleActivity extends AppCompatActivity {
                     }
                 }).start();
             }
-        } 
+
+
+
+            if(requestCode == 11 && resultCode == RESULT_OK) {
+                boolean found = false;
+                pd = new ProgressDialog(this);
+                pd.setMessage("Please Wait");
+                pd.setTitle("Uploading Document");
+                pd.setCancelable(false);
+                pd.setCanceledOnTouchOutside(false);
+                pd.show();
+
+                File f = new File(Environment.getExternalStorageDirectory().toString());
+                for (File temp : f.listFiles()) {
+                    Log.d("file", temp.toString());
+
+                    if (temp.getName().equals("temp.jpg")) {
+                        f = temp;
+                        found = true;
+
+                        Log.d("file", "sdad");
+
+                        final File image = temp;
+
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+
+
+
+                                if (image != null) {
+                                    fileupload(image);
+
+                                } else {
+                                    Log.d("File", "is Empty");
+                                }
+
+
+                            }
+                        }).start();
+
+
+
+
+
+
+                        break;
+                    }
+                }
+
+                if(!found) {
+                    pd.dismiss();
+                    Toast.makeText(this, "Unable to select image, please use gallery", Toast.LENGTH_LONG).show();
+                }
+            }
+
+
+
+
+
+
+
+        }
         catch (NullPointerException e) {
             Toast.makeText(this, "There was an error selecting image, please try using photos", Toast.LENGTH_SHORT).show();
+            pd.dismiss();
         }
+
+
+
     }
 
 //    public String getRealPathFromURI(Uri contentUri) {
@@ -358,6 +490,7 @@ public class uploadVehicleActivity extends AppCompatActivity {
                         RequestBody.create(MediaType.parse("image/jpeg"),f))
                 .addFormDataPart("artifacttype", artifactType)
                 .addFormDataPart("vehicleId", Integer.toString(vehicleId))
+                .addFormDataPart("userId", userId)
                 .build();
 
 
@@ -420,6 +553,13 @@ public class uploadVehicleActivity extends AppCompatActivity {
             b.putString("what", "Upload Failed! Try Again"); // for example
             msg.setData(b);
 
+        } catch (Exception e) {
+            pd.dismiss();
+            e.printStackTrace();
+            Message msg = new Message();
+            Bundle b = new Bundle();
+            b.putString("what", "Upload Failed! Try Again"); // for example
+            msg.setData(b);
         }
 
     }
@@ -441,9 +581,40 @@ public class uploadVehicleActivity extends AppCompatActivity {
     /*  Button Click Events */
     public void uploadVehicleImage(View view) {
         artifactType = "VI";
-        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-        i.setType("image/jpeg");
-        startActivityForResult(i, 10);
+        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Driving Licence!");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if (options[which].equals("Take Photo"))
+                {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    cameraPictureUrl = createImageUri();
+                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, cameraPictureUrl);
+                    startActivityForResult(intent, 11);
+                }
+                else if (options[which].equals("Choose from Gallery"))
+                {
+                    Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                    i.setType("image/jpeg");
+                    startActivityForResult(i, 10);
+
+                }
+                else if (options[which].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+
+            }
+
+        });
+
+
+        builder.show();
+
 
     }
 
@@ -451,20 +622,82 @@ public class uploadVehicleActivity extends AppCompatActivity {
     /*  Button Click Events */
     public void uploadVehicleRC(View view) {
         artifactType = "RC";
-        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-        i.setType("image/jpeg");
-        startActivityForResult(i, 10);
+        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Driving Licence!");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if (options[which].equals("Take Photo"))
+                {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, cameraPictureUrl);
+//                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                    startActivityForResult(intent, 11);
+                }
+                else if (options[which].equals("Choose from Gallery"))
+                {
+                    Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                    i.setType("image/jpeg");
+                    startActivityForResult(i, 10);
+
+                }
+                else if (options[which].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+
+            }
+
+        });
+
+
+        builder.show();
+
     }
 
 
-    /*  Button Click Events */
-    public void uploadInsurance(View view) {
-        artifactType = "II";
-        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-        i.setType("image/jpeg");
-        startActivityForResult(i, 10);
-
-    }
+//    /*  Button Click Events */
+//    public void uploadInsurance(View view) {
+//        artifactType = "II";
+//        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Driving Licence!");
+//        builder.setItems(options, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//                if (options[which].equals("Take Photo"))
+//                {
+//                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+//                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+//                    startActivityForResult(intent, 11);
+//                }
+//                else if (options[which].equals("Choose from Gallery"))
+//                {
+//                    Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+//                    i.setType("image/jpeg");
+//                    startActivityForResult(i, 10);
+//
+//                }
+//                else if (options[which].equals("Cancel")) {
+//                    dialog.dismiss();
+//                }
+//
+//            }
+//
+//        });
+//
+//
+//        builder.show();
+//
+//
+//    }
 
 
 

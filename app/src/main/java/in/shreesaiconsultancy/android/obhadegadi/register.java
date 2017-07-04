@@ -53,6 +53,8 @@ class register extends AsyncTask<String, Void, String> {
                 String phone = params[3];
                 String password = params[4];
                 String userType = params[5];
+                String pincode = params[7];
+                String cname = params[6];
 
                 JSONObject registerJson = new JSONObject();
 
@@ -68,9 +70,21 @@ class register extends AsyncTask<String, Void, String> {
 
 
                 try {
+
+                    if(!cname.equals("121"))
+                    {
+                        registerJson.put("companyName", cname);
+                    }
+
+
+
                     registerJson.put("username", name);
-                    registerJson.put("email", email);
+
+                    if(!(email.length() == 0)) {
+                        registerJson.put("email", email);
+                    }
                     registerJson.put("phone", phone);
+                    registerJson.put("pincode", pincode);
                     registerJson.put("password", password);
                     registerJson.put("userType", userType);
 

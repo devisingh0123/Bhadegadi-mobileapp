@@ -53,10 +53,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-
+                    android:onClick="uploadDrivingLicense"
                     android:background="@color/colorPrimary"
                     android:textColor="@android:color/white"
-                    android:onClick="uploadDrivingLicense"
                     android:text="Upload Driving License"/>
 
             </LinearLayout>
@@ -76,43 +75,43 @@
 
                 <Button
                     android:id="@+id/vehicleImage"
+                    android:onClick="uploadVehicleImage"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@color/colorPrimary"
                     android:textColor="@android:color/white"
-                    android:onClick="uploadVehicleImage"
                     android:text="Upload Vehicle Image"/>
 
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_height="match_parent">-->
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/insurance2"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:src="@drawable/insurance2"/>-->
 
 
-                <Button
-                    android:onClick="uploadInsurance"
-                    android:id="@+id/insuranceImage"
-                    android:layout_width="match_parent"
-                    android:layout_margin="10dp"
-                    android:background="@color/colorPrimary"
-                    android:textColor="@android:color/white"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Upload Insurance image"/>
+                <!--<Button-->
+                    <!--android:onClick="uploadInsurance"-->
+                    <!--android:id="@+id/insuranceImage"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_margin="10dp"-->
+                    <!--android:background="@color/colorPrimary"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="Upload Insurance image"/>-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
 
 

@@ -57,6 +57,8 @@ public class showVehiclesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_vehicles);
 
+        getIntent().setAction("Already created");
+
         iv_error = (ImageView) findViewById(R.id.iv_error);
         tv_error = (TextView) findViewById(R.id.tv_error);
 
@@ -93,7 +95,28 @@ public class showVehiclesActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        Log.v("Example", "onResume");
+
+        String action = getIntent().getAction();
+        // Prevent endless loop by adding a unique action, don't restart if action is present
+        if(action == null || !action.equals("Already created")) {
+            Intent intent = getIntent();
+            startActivity(intent);
+            finish();
+        }
+        // Remove the unique action so the next time onResume is called it will restart
+        else
+            getIntent().setAction(null);
+
+        super.onResume();
+    }
+
+
+
     private void loadRecyclerViewData() {
+        listItems.clear();
         tv_error.setVisibility(View.INVISIBLE);
         iv_error.setVisibility(View.INVISIBLE);
         final ProgressDialog pd = new ProgressDialog(this);
@@ -102,8 +125,9 @@ public class showVehiclesActivity extends AppCompatActivity {
 
         session = new sessionManager(this);
         String userId = session.getUserId();
+        Log.d("user", userId);
         String url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/api/" + userId + "/getUserVehicleList";
-
+        Log.d("uel", url);
 
         StringRequest stringReq = new StringRequest(Request.Method.GET,
                 url,
@@ -113,27 +137,35 @@ public class showVehiclesActivity extends AppCompatActivity {
                         pd.dismiss();
                         try {
                             JSONObject result = new JSONObject(response);
+
+
+                            Log.d("result", result.toString());
+
                             JSONArray array = result.getJSONArray("resultList");
                             boolean drivingLicensePresent = false;
 
                             for(int i=0; i<array.length(); i++) {
                                 JSONObject o = array.getJSONObject(i);
-                                JSONArray a = o.getJSONArray("artifactList");
+
+                                if(!(o.getString("artifactList").equals("null"))) {
+                                    JSONArray a = o.getJSONArray("artifactList");
+                                    String js = a.toString();
+                                    String[] x = js.split("\\,");
+                                    for(int j =0; j<a.length(); j++ ){
+
+                                        String[] y = x[j].split("\\/");
+
+                                        if(y[(y.length - 1)].equals("VI.jpg\"") || y[(y.length - 1)].equals("VI.jpg\"]")) {
+                                            drivingLicensePresent = true;
+                                            break;
+                                        }
 
 
-                                String js = a.toString();
-                                String[] x = js.split("\\,");
-                                for(int j =0; j<a.length(); j++ ){
-
-                                    String[] y = x[j].split("\\/");
-
-                                    if(y[(y.length - 1)].equals("VI.jpg\"") || y[(y.length - 1)].equals("VI.jpg\"]")) {
-                                        drivingLicensePresent = true;
-                                        break;
                                     }
-
-
                                 }
+
+
+
 
 
                                 vehicleListItem item = new vehicleListItem(

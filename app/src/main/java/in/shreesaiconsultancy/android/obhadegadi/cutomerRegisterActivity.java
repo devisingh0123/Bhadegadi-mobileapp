@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class cutomerRegisterActivity extends AppCompatActivity {
 
     TextView pageTitle, signinText;
-    EditText fullName, email, phone, password, cpassword;
+    EditText fullName, email, phone, password, cpassword, pincode;
     Button register, signinBtn;
 
     public static final String MyPREFERENCES = "userInfo";
@@ -30,6 +30,7 @@ public class cutomerRegisterActivity extends AppCompatActivity {
         fullName = (EditText) findViewById(R.id.et_name);
         email = (EditText) findViewById(R.id.et_email);
         phone = (EditText) findViewById(R.id.et_phone);
+        pincode = (EditText) findViewById(R.id.et_pincode);
         password = (EditText) findViewById(R.id.et_password);
         cpassword = (EditText) findViewById(R.id.et_cpassword);
         register = (Button) findViewById(R.id.btn_register);
@@ -51,23 +52,25 @@ public class cutomerRegisterActivity extends AppCompatActivity {
         String sname = fullName.getText().toString();
         String semail = email.getText().toString();
         String sphone = phone.getText().toString();
+        String spincode = pincode.getText().toString();
         String spassword = password.getText().toString();
         String scpassword = cpassword.getText().toString();
+        String cname = "121";
 
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         String phonePattern = "^[789]\\d{9}$";
 
 
-        if (sname.length() == 0 || sphone.length() == 0 || spassword.length() == 0 || scpassword.length() == 0) {
+        if (sname.length() == 0 || sphone.length() == 0 || spassword.length() == 0 || scpassword.length() == 0 || spincode.length() == 0) {
             Toast.makeText(cutomerRegisterActivity.this, "Please fill the form.",
                     Toast.LENGTH_LONG).show();
         } else if (spassword.equals(scpassword)) {
             if (spassword.length() >= 6) {
                 if (sphone.matches(phonePattern)) {
-                    if (semail.matches(emailPattern)) {
+                    if (semail.matches(emailPattern) || semail.length() == 0) {
                         String type = "register";
                         register reg = new register(this);
-                        reg.execute(type, sname, semail, sphone, spassword, "customer");
+                        reg.execute(type, sname, semail, sphone, spassword, "customer", cname, spincode);
 
                     } else {
                         Toast.makeText(cutomerRegisterActivity.this, "Invalid email address", Toast.LENGTH_LONG).show();

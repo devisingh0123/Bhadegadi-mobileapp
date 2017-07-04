@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class ownerRegistrationActivity extends AppCompatActivity {
 
         TextView pageTitle, signinText;
-        EditText fullName, email, phone, password, cpassword;
+        EditText fullName, email, phone, password, cpassword, companyName, pincode;
         Button register, signinBtn;
         //    SharedPreferences sharedpreferences;
         ProgressBar progressBar;
@@ -41,6 +41,8 @@ public class ownerRegistrationActivity extends AppCompatActivity {
             phone = (EditText) findViewById(R.id.et_phone);
             password = (EditText) findViewById(R.id.et_password);
             cpassword = (EditText) findViewById(R.id.et_cpassword);
+            companyName = (EditText) findViewById(R.id.et_company_name);
+            pincode = (EditText) findViewById(R.id.et_pincode);
             register = (Button) findViewById(R.id.btn_register);
             signinText = (TextView) findViewById(R.id.tv_signin_text);
             signinBtn = (Button) findViewById(R.id.btn_signin);
@@ -63,21 +65,23 @@ public class ownerRegistrationActivity extends AppCompatActivity {
             String sphone = phone.getText().toString();
             String spassword = password.getText().toString();
             String scpassword = cpassword.getText().toString();
+            String cname = companyName.getText().toString();
+            String spincode = pincode.getText().toString();
 
             String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
             String phonePattern = "^[789]\\d{9}$";
 
 
-            if (sname.length() == 0 || sphone.length() == 0 || spassword.length() == 0 || scpassword.length() == 0) {
+            if (sname.length() == 0 || sphone.length() == 0 || spassword.length() == 0 || scpassword.length() == 0 || spincode.length() == 0) {
                 Toast.makeText(ownerRegistrationActivity.this, "Please fill the form.",
                         Toast.LENGTH_LONG).show();
             } else if (spassword.equals(scpassword)) {
                 if (spassword.length() >= 6) {
                     if (sphone.matches(phonePattern)) {
-                        if (semail.matches(emailPattern)) {
+                        if (semail.matches(emailPattern) || semail.length() == 0) {
                             String type = "register";
                             register reg = new register(this);
-                            reg.execute(type, sname, semail, sphone, spassword, "operator");
+                            reg.execute(type, sname, semail, sphone, spassword, "operator", cname, spincode);
 
                         } else {
                             Toast.makeText(ownerRegistrationActivity.this, "Invalid email address", Toast.LENGTH_LONG).show();
