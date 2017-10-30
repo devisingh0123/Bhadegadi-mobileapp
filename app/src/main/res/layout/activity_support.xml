@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        tools:context="in.shreesaiconsultancy.android.obhadegadi.supportActivity">
+
+
+        <include layout="@layout/owner_nav_action"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </include>
+
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:textSize="24sp"
+            android:layout_marginTop="70dp"
+            android:textColor="#222222"
+            android:textStyle="bold"
+            android:padding="25dp"
+            android:text="O...Bhadegadi team is happy to assist you."
+            android:layout_height="wrap_content" />
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:textSize="18sp"
+            android:textColor="#222222"
+            android:layout_marginTop="140dp"
+            android:padding="25dp"
+            android:text="Please visit our site for details:-"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:textSize="18sp"
+            android:autoLink="web"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="170dp"
+            android:padding="25dp"
+            android:text="@string/support_link"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:textSize="18sp"
+            android:textColor="#222222"
+            android:layout_marginTop="220dp"
+            android:padding="25dp"
+            android:text="Or Connect with us on:-"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:textSize="18sp"
+            android:autoLink="phone"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="275dp"
+            android:paddingLeft="25dp"
+            android:text="@string/support_phone1"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:textSize="18sp"
+            android:autoLink="phone"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="305dp"
+            android:paddingLeft="20dp"
+            android:text="@string/support_phone2"
+            android:layout_height="wrap_content" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav"
+        android:background="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:itemIconTint="@android:color/black"
+        app:itemTextColor="@android:color/black"
+        app:headerLayout="@layout/owner_nav_header"
+        app:menu="@menu/owner_menu"
+        android:layout_gravity="start">
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

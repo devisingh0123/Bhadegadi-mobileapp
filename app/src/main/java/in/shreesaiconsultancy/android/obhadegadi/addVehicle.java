@@ -40,7 +40,7 @@ public class addVehicle extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
 
-        String register_url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/api/addVehicle";
+        String register_url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com:8080/api/addVehicle";
             try {
                 ArrayList<String> listItems = new ArrayList<String>();
                 URL url = new URL(register_url);
@@ -56,7 +56,6 @@ public class addVehicle extends AsyncTask<String, Void, String> {
 
                 JSONObject registerJson = new JSONObject();
 
-
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setRequestProperty("Content-Type", "application/json");
@@ -64,8 +63,6 @@ public class addVehicle extends AsyncTask<String, Void, String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-
-
 
                 try {
                     registerJson.put("dayallowance", dayallowance);
@@ -82,8 +79,6 @@ public class addVehicle extends AsyncTask<String, Void, String> {
                     e.printStackTrace();
                 }
 
-
-
                 bw.write(registerJson.toString());
                 bw.flush();
                 bw.close();
@@ -94,16 +89,10 @@ public class addVehicle extends AsyncTask<String, Void, String> {
                 String result="";
                 String line="";
 
-
-
-
-
-
                 while ((line = bufferedReader.readLine())!= null) {
 
                     result += line;
                 }
-
 
                 try {
                     JSONObject j = new JSONObject(result);
@@ -114,14 +103,10 @@ public class addVehicle extends AsyncTask<String, Void, String> {
                     e.printStackTrace();
                 }
 
-
-
-
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
                 return line;
-
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -148,7 +133,6 @@ public class addVehicle extends AsyncTask<String, Void, String> {
         if(result == null) {
             Toast.makeText(context, "Please check your internet connection and try again.",
                     Toast.LENGTH_LONG).show();
-
         } else {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
             if(result.equals("Vehicle has been registered with system  and under verification phase")){

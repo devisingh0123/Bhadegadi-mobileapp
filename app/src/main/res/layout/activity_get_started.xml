@@ -61,6 +61,7 @@
             android:onClick="getRide"
             android:background="@android:color/white"
             android:text="Get a Ride"
+            android:visibility="invisible"
             android:textColor="#222222" />
 
     </LinearLayout>

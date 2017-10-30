@@ -47,7 +47,7 @@ class login extends AsyncTask<String, Void, String> {
 
 
         String type = params[0];
-        String register_url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/api/doLogin";
+        String register_url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com:8080/api/doLogin";
         if (type.equals("login")) {
             try {
                 ArrayList<String> listItems = new ArrayList<String>();
@@ -65,7 +65,6 @@ class login extends AsyncTask<String, Void, String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-
                 try {
                     loginJson.put("password", password);
                     loginJson.put("username", phone);
@@ -73,7 +72,6 @@ class login extends AsyncTask<String, Void, String> {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
                 bw.write(loginJson.toString());
                 bw.flush();
                 bw.close();
@@ -84,9 +82,7 @@ class login extends AsyncTask<String, Void, String> {
                 String result="";
                 String line="";
 
-
                 while ((line = bufferedReader.readLine())!= null) {
-
                     result += line;
                 }
 
@@ -100,14 +96,10 @@ class login extends AsyncTask<String, Void, String> {
                     e.printStackTrace();
                 }
 
-
-
-
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
                 return line;
-
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -115,11 +107,7 @@ class login extends AsyncTask<String, Void, String> {
                 e.printStackTrace();
             }
         }
-
-
-
-
-
+        
         return null;
     }
 
@@ -138,8 +126,6 @@ class login extends AsyncTask<String, Void, String> {
         String uid = "";
         ProgressBar progressBar = (ProgressBar) ((Activity)context).findViewById(R.id.pb_login);
         progressBar.setVisibility(ProgressBar.INVISIBLE);
-
-
         try {
             if(result != null) {
                 JSONObject results = new JSONObject(result);
@@ -161,23 +147,14 @@ class login extends AsyncTask<String, Void, String> {
                     Toast.LENGTH_LONG).show();
         }
 
-
-
         if (status.equals("Successfully login validated")) {
             session = new sessionManager(context);
             session.setFirstTimeLaunch(false);
             session.setUserId(uid);
             session.setUserType(Usertype);
-            if(Usertype.equals("operator")) {
-                Intent intent = new Intent(context, ownerHistoryActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                context.startActivity(intent);
-            }
-            if(Usertype.equals("customer")) {
-                Intent intent = new Intent(context, userHomeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                context.startActivity(intent);
-            }
+            Intent intent = new Intent(context, HomePageActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            context.startActivity(intent);
         }
     }
 

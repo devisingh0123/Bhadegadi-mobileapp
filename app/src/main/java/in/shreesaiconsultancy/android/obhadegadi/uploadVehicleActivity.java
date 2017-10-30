@@ -1,4 +1,3 @@
-package in.shreesaiconsultancy.android.obhadegadi;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -55,7 +54,6 @@ import okhttp3.RequestBody;
 
 public class uploadVehicleActivity extends AppCompatActivity {
 
-    // Nav bar
     sessionManager session;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle navToggle;
@@ -66,50 +64,30 @@ public class uploadVehicleActivity extends AppCompatActivity {
     String realPath_1;
     private Uri cameraPictureUrl;
 
-    // Activity
     Button drivingLicense, vehicleImage, vehicleRc, InsuranceImage;
     int vehicleId;
     String artifactType;
-
     ProgressDialog pd;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         String s= getIntent().getExtras().getString("vehicleId");
-
-
         session = new sessionManager(this);
         vehicleId = Integer.parseInt(s);
-
         userId = session.getUserId();
-
-
         /******** Uploads **********/
         drivingLicense = (Button) findViewById(R.id.drivingLicense);
         vehicleImage = (Button) findViewById(R.id.vehicleImage);
         vehicleRc = (Button) findViewById(R.id.vehicleRc);
-//        InsuranceImage = (Button) findViewById(R.id.insuranceImage);
 
-
-
-
-
-        /********** Notification Bar ***********/
-
-//        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_vehicle);
-
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         navToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-
-
 
         drawerLayout.addDrawerListener(navToggle);
         navToggle.syncState();
@@ -122,78 +100,56 @@ public class uploadVehicleActivity extends AppCompatActivity {
 
         Typeface comfortaa = Typeface.createFromAsset(getAssets(), "fonts/Comfortaa-Bold.ttf");
         app_name.setTypeface(comfortaa);
-
-
     }
-
-
-
-
 
     private android.os.Handler handler = new android.os.Handler() {
         @Override
         public void handleMessage(Message msg) {
             String status = msg.getData().getString("what");
-
-
-
             Toast.makeText(uploadVehicleActivity.this, status, Toast.LENGTH_LONG).show();
-
             if(status.equals("Upload Successful")) {
-
                 drivingLicense = (Button) findViewById(R.id.drivingLicense);
                 vehicleImage = (Button) findViewById(R.id.vehicleImage);
                 vehicleRc = (Button) findViewById(R.id.vehicleRc);
-//                InsuranceImage = (Button) findViewById(R.id.insuranceImage);
-
                 if(artifactType.equals("DL")) {
                     drivingLicense.setText("Uploaded");
                 }
                 if(artifactType.equals("VI")) {
                     vehicleImage.setText("Uploaded");
+                    Button disabled = (Button) findViewById(R.id.disabledButton);
+                    Button doneBtn = (Button) findViewById(R.id.doneButton);
+                    disabled.setVisibility(View.INVISIBLE);
+                    doneBtn.setVisibility(View.VISIBLE);
                 }
                 if(artifactType.equals("RC")) {
                     vehicleRc.setText("Uploaded");
+
                 }
-//                if(artifactType.equals("II")) {
-//                    InsuranceImage.setText("Uploaded");
-//                }
 
                 if(drivingLicense.getText().equals("Uploaded") && vehicleImage.getText().equals("Uploaded") && vehicleRc.getText().equals("Uploaded")) {
-
                     Intent intent = new Intent(uploadVehicleActivity.this, showVehiclesActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-
                 }
-
-
-
-
             }
-
-
-            Log.d("status Handler", status);
-
         }
     };
 
+    public void done(View view) {
+        Intent intent = new Intent(uploadVehicleActivity.this, HomePageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 
-
-    /*  Button Click Events */
     public void uploadDrivingLicense(View view) {
 
         artifactType = "DL";
-
-
             final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
-
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Driving Licence!");
+            builder.setTitle("Vehicle Image!");
             builder.setItems(options, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-
                     if (options[which].equals("Take Photo")) {
                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
@@ -204,33 +160,23 @@ public class uploadVehicleActivity extends AppCompatActivity {
                         Intent i = new Intent(Intent.ACTION_GET_CONTENT);
                         i.setType("image/jpeg");
                         startActivityForResult(i, 10);
-
                     } else if (options[which].equals("Cancel")) {
                         dialog.dismiss();
                     }
-
                 }
 
             });
-
-
             builder.show();
-
-
-
     }
 
 
     private Uri createImageUri() {
-                ContentResolver contentResolver = getContentResolver();
-            ContentValues cv = new ContentValues();
+    	ContentResolver contentResolver = getContentResolver();
+    	ContentValues cv = new ContentValues();
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         cv.put(MediaStore.Images.Media.TITLE, "temp");
               return contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
     }
-
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
@@ -238,16 +184,13 @@ public class uploadVehicleActivity extends AppCompatActivity {
         try {
             if (requestCode == 10 && resultCode == RESULT_OK) {
 
-
                 final File file;
 
                 Uri uri = data.getData();
-//                final String path = getRealPathFromURI(uri);
                 final String path;
 
                 path = getPath(this, uri);
                 if (path == null) {
-//                    filename = FilenameUtils.getName(uri.toString());
                     Toast.makeText(this, "Error selecting file.", Toast.LENGTH_SHORT).show();
                 } else {
                     File file2 = new File(path);
@@ -265,7 +208,6 @@ public class uploadVehicleActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-
                         File file2 = new File(path);
 
                         File imageFile = file2;
@@ -275,13 +217,9 @@ public class uploadVehicleActivity extends AppCompatActivity {
                         } else {
                             Log.d("File", "is Empty");
                         }
-
-
                     }
                 }).start();
             }
-
-
 
             if(requestCode == 11 && resultCode == RESULT_OK) {
                 boolean found = false;
@@ -299,34 +237,17 @@ public class uploadVehicleActivity extends AppCompatActivity {
                     if (temp.getName().equals("temp.jpg")) {
                         f = temp;
                         found = true;
-
-                        Log.d("file", "sdad");
-
                         final File image = temp;
-
-
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-
-
-
                                 if (image != null) {
                                     fileupload(image);
-
                                 } else {
                                     Log.d("File", "is Empty");
                                 }
-
-
                             }
                         }).start();
-
-
-
-
-
-
                         break;
                     }
                 }
@@ -336,48 +257,17 @@ public class uploadVehicleActivity extends AppCompatActivity {
                     Toast.makeText(this, "Unable to select image, please use gallery", Toast.LENGTH_LONG).show();
                 }
             }
-
-
-
-
-
-
-
         }
         catch (NullPointerException e) {
             Toast.makeText(this, "There was an error selecting image, please try using photos", Toast.LENGTH_SHORT).show();
             pd.dismiss();
         }
-
-
-
     }
-
-//    public String getRealPathFromURI(Uri contentUri) {
-//        String[] proj = { MediaStore.Images.Media.DATA };
-//
-//
-//
-//
-//        android.content.CursorLoader cursorLoader = new android.content.CursorLoader(
-//                this,
-//                contentUri, proj, null, null, null);
-//        Cursor cursor = cursorLoader.loadInBackground();
-//
-//        int column_index =
-//                cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//        cursor.moveToFirst();
-//        return cursor.getString(column_index);
-//    }
-
-
 
     public static String getPath(Context context, Uri uri) {
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
-        // DocumentProvider
         if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
-            // ExternalStorageProvider
             if (isExternalStorageDocument(uri)) {
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
@@ -386,17 +276,13 @@ public class uploadVehicleActivity extends AppCompatActivity {
                 if ("primary".equalsIgnoreCase(type)) {
                     return Environment.getExternalStorageDirectory() + "/" + split[1];
                 }
-                // TODO handle non-primary volumes
             }
-            // DownloadsProvider
             else if (isDownloadsDocument(uri)) {
                 final String id = DocumentsContract.getDocumentId(uri);
                 final Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
                 return getDataColumn(context, contentUri, null, null);
             }
-            // MediaProvider
-            else
-            if (isMediaDocument(uri)) {
+            else if (isMediaDocument(uri)) {
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
                 final String type = split[0];
@@ -413,14 +299,12 @@ public class uploadVehicleActivity extends AppCompatActivity {
                 return getDataColumn(context, contentUri, selection, selectionArgs);
             }
         }
-        // MediaStore (and general)
+
         else if ("content".equalsIgnoreCase(uri.getScheme())) {
-            // Return the remote address
             if (isGooglePhotosUri(uri))
                 return uri.getLastPathSegment();
             return getDataColumn(context, uri, null, null);
         }
-        // File
         else if ("file".equalsIgnoreCase(uri.getScheme())) {
             return uri.getPath();
         }
@@ -448,31 +332,17 @@ public class uploadVehicleActivity extends AppCompatActivity {
         return "com.android.externalstorage.documents".equals(uri.getAuthority());
     }
 
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is DownloadsProvider.
-     */
     public static boolean isDownloadsDocument(Uri uri) {
         return "com.android.providers.downloads.documents".equals(uri.getAuthority());
     }
 
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is MediaProvider.
-     */
     public static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
 
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is Google Photos.
-     */
     public static boolean isGooglePhotosUri(Uri uri) {
         return "com.google.android.apps.photos.content".equals(uri.getAuthority());
     }
-
-
 
     private void fileupload(File f) {
 
@@ -493,10 +363,8 @@ public class uploadVehicleActivity extends AppCompatActivity {
                 .addFormDataPart("userId", userId)
                 .build();
 
-
-
         okhttp3.Request request = new okhttp3.Request.Builder()
-                .url("http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/api/uploadArtifact")
+                .url("http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com:8080/api/uploadArtifact")
                 .post(body)
                 .build();
 
@@ -507,26 +375,23 @@ public class uploadVehicleActivity extends AppCompatActivity {
                 throw new IOException("Error"+response);
             }
 
-
             String jsonData = response.body().string();
             try {
 
-
                 JSONObject Jobject = new JSONObject(jsonData);
-
 
                 String resultStatus = Jobject.getString("requstStatus");
 
                 if (resultStatus.equals("OK")) {
                     Message msg = new Message();
                     Bundle b = new Bundle();
-                    b.putString("what", "Upload Successful"); // for example
+                    b.putString("what", "Upload Successful");
                     msg.setData(b);
                     handler.sendMessage(msg);
                 } else {
                     Message msg = new Message();
                     Bundle b = new Bundle();
-                    b.putString("what", "Upload Failed! Large File or slow network"); // for example
+                    b.putString("what", "Upload Failed! Large File or slow network");
                     msg.setData(b);
                     handler.sendMessage(msg);
 
@@ -539,7 +404,7 @@ public class uploadVehicleActivity extends AppCompatActivity {
                 pd.dismiss();
                 Message msg = new Message();
                 Bundle b = new Bundle();
-                b.putString("what", "Upload Failed! Try Again"); // for example
+                b.putString("what", "Upload Failed! Try Again");
                 msg.setData(b);
                 handler.sendMessage(msg);
 
@@ -550,7 +415,7 @@ public class uploadVehicleActivity extends AppCompatActivity {
             e.printStackTrace();
             Message msg = new Message();
             Bundle b = new Bundle();
-            b.putString("what", "Upload Failed! Try Again"); // for example
+            b.putString("what", "Upload Failed! Try Again");
             msg.setData(b);
 
         } catch (Exception e) {
@@ -558,7 +423,7 @@ public class uploadVehicleActivity extends AppCompatActivity {
             e.printStackTrace();
             Message msg = new Message();
             Bundle b = new Bundle();
-            b.putString("what", "Upload Failed! Try Again"); // for example
+            b.putString("what", "Upload Failed! Try Again");
             msg.setData(b);
         }
 
@@ -584,7 +449,7 @@ public class uploadVehicleActivity extends AppCompatActivity {
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Driving Licence!");
+        builder.setTitle("Vehicle Image!");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -625,7 +490,7 @@ public class uploadVehicleActivity extends AppCompatActivity {
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Driving Licence!");
+        builder.setTitle("Vehicle Image!");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -715,6 +580,7 @@ public class uploadVehicleActivity extends AppCompatActivity {
             /* Menu onClick Functions */
 
 
+    /* Menu onClick Functions */
     public void logout(MenuItem item){
         session = new sessionManager(this);
         session.setFirstTimeLaunch(true);
@@ -723,12 +589,38 @@ public class uploadVehicleActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void vehicles(MenuItem item){
         Intent intent = new Intent(this, showVehiclesActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
+    public void go_home(MenuItem item) {
+        Intent intent = new Intent(this, HomePageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+
+    public void go_search(MenuItem item) {
+        Intent intent = new Intent(this, searchVehicleActivity.class);
+        startActivity(intent);
+    }
+
+    public void go_support(MenuItem item) {
+        Intent intent = new Intent(this, supportActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void go_about(MenuItem item) {
+        Intent intent = new Intent(this, aboutActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+
+
 
     public void history(MenuItem item){
         Intent intent = new Intent(this, ownerHistoryActivity.class);

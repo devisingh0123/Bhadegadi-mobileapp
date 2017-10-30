@@ -21,6 +21,7 @@ public class ownerHistoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_history);
 
@@ -44,9 +45,6 @@ public class ownerHistoryActivity extends AppCompatActivity {
         Typeface comfortaa = Typeface.createFromAsset(getAssets(), "fonts/Comfortaa-Bold.ttf");
         app_name.setTypeface(comfortaa);
 
-
-
-
     }
 
 
@@ -61,19 +59,40 @@ public class ownerHistoryActivity extends AppCompatActivity {
 
 
     /* Menu onClick Functions */
-
-
     public void logout(MenuItem item){
         session = new sessionManager(this);
         session.setFirstTimeLaunch(true);
-        Intent intent = new Intent(ownerHistoryActivity.this, ownerLoginActivity.class);
+        Intent intent = new Intent(this, ownerLoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void vehicles(MenuItem item){
+        Intent intent = new Intent(this, showVehiclesActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void go_home(MenuItem item) {
+        Intent intent = new Intent(this, HomePageActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
 
-    public void vehicles(MenuItem item){
-        Intent intent = new Intent(this, showVehiclesActivity.class);
+    public void go_search(MenuItem item) {
+        Intent intent = new Intent(this, searchVehicleActivity.class);
+        startActivity(intent);
+    }
+
+    public void go_support(MenuItem item) {
+        Intent intent = new Intent(this, supportActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void go_about(MenuItem item) {
+        Intent intent = new Intent(this, aboutActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

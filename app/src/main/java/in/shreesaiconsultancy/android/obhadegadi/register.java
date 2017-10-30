@@ -43,7 +43,7 @@ class register extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String register_url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/api/registerUser";
+        String register_url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com:8080/api/registerUser";
         if (type.equals("register")) {
             try {
                 ArrayList<String> listItems = new ArrayList<String>();
@@ -67,16 +67,12 @@ class register extends AsyncTask<String, Void, String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-
-
                 try {
 
                     if(!cname.equals("121"))
                     {
                         registerJson.put("companyName", cname);
                     }
-
-
 
                     registerJson.put("username", name);
 
@@ -91,8 +87,6 @@ class register extends AsyncTask<String, Void, String> {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
 
                 bw.write(registerJson.toString());
                 bw.flush();
@@ -120,34 +114,23 @@ class register extends AsyncTask<String, Void, String> {
                 String result="";
                 String line="";
 
-
-
-
-
-
                 while ((line = bufferedReader.readLine())!= null) {
 
                     result += line;
                 }
 
-
                 try {
                     JSONObject j = new JSONObject(result);
-//                    line = j.getString("requstStatus");
                     line = j.toString();
                     Log.d("asdada", line);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-
-
-
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
                 return line;
-
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -164,7 +147,6 @@ class register extends AsyncTask<String, Void, String> {
         ProgressBar progressBar = (ProgressBar) ((Activity)context).findViewById(R.id.pb_register);
         progressBar.setVisibility(ProgressBar.VISIBLE);
         super.onPreExecute();
-
     }
 
     @Override
@@ -201,12 +183,12 @@ class register extends AsyncTask<String, Void, String> {
                     session.setUserId(uid);
                     session.setUserType(Usertype);
                     if(Usertype.equals("operator")) {
-                        Intent intent = new Intent(context, ownerHistoryActivity.class);
+                        Intent intent = new Intent(context, HomePageActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         context.startActivity(intent);
                     }
                     if(Usertype.equals("customer")) {
-                        Intent intent = new Intent(context, userHomeActivity.class);
+                        Intent intent = new Intent(context, HomePageActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         context.startActivity(intent);
                     }
@@ -215,7 +197,6 @@ class register extends AsyncTask<String, Void, String> {
                             Toast.LENGTH_LONG).show();
                 }
 
-
             } else {
                 Toast.makeText(context, "Please check your internet connection and try again.",
                         Toast.LENGTH_LONG).show();
@@ -223,12 +204,6 @@ class register extends AsyncTask<String, Void, String> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
     }
 
     @Override

@@ -1,40 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="in.shreesaiconsultancy.android.obhadegadi.searchVehicleActivity">
 
-    <android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/greyBg"
-        tools:context="in.shreesaiconsultancy.android.obhadegadi.searchVehicleActivity">
-
-        <include layout="@layout/owner_nav_action"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </include>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+                android:layout_weight="1"
+                android:textSize="24dp"
+                android:textColor="#222222"
+                android:layout_marginTop="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Search Vehicles"/>
+
+            <ImageButton
+                android:onClick="goback"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_clear_black_24dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="15dp"
+            android:paddingBottom="10dp"
+            android:layout_marginEnd="15dp">
+
+            <TextView
+                android:id="@+id/from_date"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:paddingLeft="10dp"
+                android:background="#ffffff"
+                android:onClick="fromDate"
+                android:hint="From Date: "/>
+            
+            <TextView
+                android:id="@+id/to_date"
+                android:gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:paddingLeft="10dp"
+                android:onClick="toDate"
+                android:background="#ffffff"
+                android:hint="To Date: "/>
+
+            <Spinner
+                android:id="@+id/sp_vehicle_type"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+
+            <Spinner
+                android:id="@+id/sp_vehicle_company"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="fill_parent"
+                android:background="@android:color/white"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="25dp"
+                tools:layout_editor_absoluteX="8dp">
+            </Spinner>
+
+
+
+
+
+            <Spinner
+                android:id="@+id/sp_service_state"
+                android:layout_width="match_parent"
+                android:background="@android:color/white"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="25dp"
+                tools:layout_editor_absoluteX="8dp">
+            </Spinner>
+
+            <Spinner
+                android:id="@+id/sp_service_city"
+                android:layout_weight="1"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:background="@android:color/white"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="50dp"
+                tools:layout_editor_absoluteX="8dp">
+            </Spinner>
+
+            <Spinner
+                android:id="@+id/sp_vehicle_model"
+                android:layout_weight="1"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:background="@android:color/white"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="25dp"
+                tools:layout_editor_absoluteX="8dp">
+            </Spinner>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="Search"
+                android:onClick="searchVehicle"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:background="@color/colorAccent"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+        <ProgressBar
+            android:id="@+id/pb_add_vehicle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="invisible"
+            />
+
+
 
     </android.support.constraint.ConstraintLayout>
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav"
-        android:background="@android:color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
-        app:headerLayout="@layout/owner_nav_header"
-        app:menu="@menu/customer_menu"
-        android:layout_gravity="start">
-
-    </android.support.design.widget.NavigationView>
-
-</android.support.v4.widget.DrawerLayout>

@@ -27,8 +27,6 @@ public class vehicleHomeActivity extends AppCompatActivity {
         Typeface gilroy = Typeface.createFromAsset(getAssets(),  "fonts/Gilroy-ExtraBold.otf");
         catchPhrase.setTypeface(gilroy);
 
-        subHeading = (TextView) findViewById(R.id.tv_sub_heading);
-        subHeading.setTypeface(montserrat);
 
     }
 

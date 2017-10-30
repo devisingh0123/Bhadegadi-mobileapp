@@ -100,13 +100,11 @@ public class showVehiclesActivity extends AppCompatActivity {
         Log.v("Example", "onResume");
 
         String action = getIntent().getAction();
-        // Prevent endless loop by adding a unique action, don't restart if action is present
         if(action == null || !action.equals("Already created")) {
             Intent intent = getIntent();
             startActivity(intent);
             finish();
         }
-        // Remove the unique action so the next time onResume is called it will restart
         else
             getIntent().setAction(null);
 
@@ -126,7 +124,7 @@ public class showVehiclesActivity extends AppCompatActivity {
         session = new sessionManager(this);
         String userId = session.getUserId();
         Log.d("user", userId);
-        String url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/api/" + userId + "/getUserVehicleList";
+        String url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com:8080/api/" + userId + "/getUserVehicleList";
         Log.d("uel", url);
 
         StringRequest stringReq = new StringRequest(Request.Method.GET,
@@ -159,14 +157,8 @@ public class showVehiclesActivity extends AppCompatActivity {
                                             drivingLicensePresent = true;
                                             break;
                                         }
-
-
                                     }
                                 }
-
-
-
-
 
                                 vehicleListItem item = new vehicleListItem(
                                         o.getString("vehicleCompany") + " " + o.getString("vehicleModel"),
@@ -178,7 +170,6 @@ public class showVehiclesActivity extends AppCompatActivity {
                                         o.getString("vehicleServiceState"),
                                         o.getString("vehicleServiceCity"),
                                         o.getString("verified")
-
                                 );
 
                                 listItems.add(item);
@@ -186,8 +177,6 @@ public class showVehiclesActivity extends AppCompatActivity {
 
                             adapter = new vehicleAdapter(listItems, getApplicationContext());
                             recyclerView.setAdapter(adapter);
-
-                            Log.d("List Size",Integer.toString(listItems.size()));
 
                             if(listItems.size() == 0) {
                                 novehicles = (TextView) findViewById(R.id.no_vehicles);
@@ -231,11 +220,6 @@ public class showVehiclesActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
-    /* Menu onClick Functions */
-
-
     public void logout(MenuItem item){
         session = new sessionManager(this);
         session.setFirstTimeLaunch(true);
@@ -244,9 +228,32 @@ public class showVehiclesActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void vehicles(MenuItem item){
         Intent intent = new Intent(this, showVehiclesActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void go_home(MenuItem item) {
+        Intent intent = new Intent(this, HomePageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+
+    public void go_search(MenuItem item) {
+        Intent intent = new Intent(this, searchVehicleActivity.class);
+        startActivity(intent);
+    }
+
+    public void go_support(MenuItem item) {
+        Intent intent = new Intent(this, supportActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void go_about(MenuItem item) {
+        Intent intent = new Intent(this, aboutActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

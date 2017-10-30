@@ -2,7 +2,7 @@
 <resources>
 
     <string-array name="luxury">
-        <item>Select Vehicle Company*</item>
+        <item>Select Vehicle Company </item>
         <item>Maruti Suzuki</item>
         <item>Hyundai</item>
         <item>Volkswagen</item>
@@ -32,7 +32,7 @@
     </string-array>
 
     <string-array name="Maruti_Suzuki">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Alto 800</item>
         <item>Alto K10</item>
         <item>Baleno</item>
@@ -51,7 +51,7 @@
     </string-array>
 
     <string-array name="Hyundai">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Creta</item>
         <item>Elantra</item>
         <item>Elite i20</item>
@@ -65,7 +65,7 @@
     </string-array>
 
     <string-array name="Volkswagen">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Ameo</item>
         <item>Beetle</item>
         <item>Cross Polo</item>
@@ -77,7 +77,7 @@
     </string-array>
 
     <string-array name="Toyota">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Camry</item>
         <item>Corolla Altis</item>
         <item>Etios Cross</item>
@@ -90,7 +90,7 @@
     </string-array>
 
     <string-array name="Honda">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Accord</item>
         <item>Amaze</item>
         <item>BR-V</item>
@@ -103,7 +103,7 @@
     </string-array>
 
     <string-array name="Ford">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Aspire</item>
         <item>EcoSport</item>
         <item>Endeavour</item>
@@ -112,7 +112,7 @@
     </string-array>
 
     <string-array name="Tata">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Aria</item>
         <item>Bolt</item>
         <item>Hexa</item>
@@ -130,7 +130,7 @@
     </string-array>
 
     <string-array name="Nissan">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>GT-R</item>
         <item>Micra</item>
         <item>Micra Active</item>
@@ -139,7 +139,7 @@
     </string-array>
 
     <string-array name="Mahindra">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Bolero</item>
         <item>e2o Plus</item>
         <item>KUV100</item>
@@ -154,7 +154,7 @@
     </string-array>
 
     <string-array name="Renault">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Duster</item>
         <item>Kwid</item>
         <item>Lodgy</item>
@@ -163,7 +163,7 @@
     </string-array>
 
     <string-array name="Audi">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>A3</item>
         <item>A4</item>
         <item>A6</item>
@@ -179,7 +179,7 @@
     </string-array>
 
     <string-array name="BMW">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>1 Series</item>
         <item>3 Series</item>
         <item>3 Series GT</item>
@@ -199,7 +199,7 @@
     </string-array>
 
     <string-array name="Mercedes_Benz">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>A Class</item>
         <item>AMG GT</item>
         <item>B Class</item>
@@ -219,14 +219,14 @@
     </string-array>
 
     <string-array name="Skoda">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Octavia</item>
         <item>Rapid</item>
         <item>Superb</item>
     </string-array>
 
     <string-array name="Chevrolet">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Beat</item>
         <item>Cruze</item>
         <item>Enjoy</item>
@@ -237,7 +237,7 @@
     </string-array>
 
     <string-array name="Aston_Martin">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>DB11</item>
         <item>Rapide</item>
         <item>V12 Vantage</item>
@@ -246,14 +246,14 @@
     </string-array>
 
     <string-array name="Datsun">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>GO</item>
         <item>GO Plus</item>
         <item>Redi-GO</item>
     </string-array>
 
     <string-array name="Fiat">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Abarth 595</item>
         <item>Avventura</item>
         <item>Linea</item>
@@ -263,20 +263,20 @@
     </string-array>
 
     <string-array name="Force_Motors">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Force Gurkha</item>
         <item>Force One</item>
     </string-array>
 
     <string-array name="Isuzu">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>D Max V Cross</item>
         <item>MU 7</item>
         <item>MU-X</item>
     </string-array>
 
     <string-array name="Jaguar">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>F TYPE</item>
         <item>F-Pace</item>
         <item>XE</item>
@@ -285,7 +285,7 @@
     </string-array>
 
     <string-array name="Land_Rover">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Discovery 4</item>
         <item>Discovery Sport</item>
         <item>Range Rover</item>
@@ -294,13 +294,13 @@
     </string-array>
 
     <string-array name="Mitsubishi">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Montero</item>
         <item>Pajero Sport</item>
     </string-array>
 
     <string-array name="Porsche">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>718</item>
         <item>911</item>
         <item>Cayenne</item>
@@ -309,7 +309,7 @@
     </string-array>
 
     <string-array name="Rolls_Royce">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Dawn</item>
         <item>Ghost Series II</item>
         <item>Phantom</item>
@@ -319,7 +319,7 @@
     </string-array>
 
     <string-array name="Volvo">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>S60</item>
         <item>S60 Cross Country</item>
         <item>S90</item>
@@ -330,7 +330,7 @@
     </string-array>
 
     <string-array name="loading_taxi">
-        <item>Select Vehicle Company*</item>
+        <item>Select Vehicle Company </item>
         <item>Tata</item>
         <item>Bajaj</item>
         <item>Atul</item>
@@ -341,7 +341,7 @@
     </string-array>
 
     <string-array name="tata_loading">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Tata Ace HT</item>
         <item>Tata Ace ZIP</item>
         <item>Tata Ace</item>
@@ -353,17 +353,17 @@
     </string-array>
 
     <string-array name="bajaj">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Maxima</item>
     </string-array>
 
     <string-array name="atul">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>GEM</item>
     </string-array>
 
     <string-array name="mahindra">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Big Bolera Pickup</item>
         <item>Big Bolera Camper</item>
         <item>Jeeto</item>
@@ -373,33 +373,33 @@
     </string-array>
 
     <string-array name="sml_isuzu">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Super</item>
         <item>Sartaj</item>
         <item>Tipper</item>
     </string-array>
 
     <string-array name="piaggio">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Ace</item>
         <item>Porter</item>
     </string-array>
 
     <string-array name="maruti">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>Super carry</item>
     </string-array>
 
 
     <string-array name="heavy">
-        <item>Select Vehicle Company*</item>
+        <item>Select Vehicle Company </item>
         <item>AMW</item>
         <item>Ashok Leyland</item>
         <item>Tata</item>
     </string-array>
 
     <string-array name="amw">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>1618 TP</item>
         <item>2516 HL</item>
         <item>2516 HL Cowl</item>
@@ -410,7 +410,7 @@
     </string-array>
 
     <string-array name="ashok_leyland">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>1616</item>
         <item>2516</item>
         <item>2523</item>
@@ -426,7 +426,7 @@
     </string-array>
 
     <string-array name="tata_heavy">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
         <item>2528</item>
         <item>3128</item>
         <item>ACE</item>

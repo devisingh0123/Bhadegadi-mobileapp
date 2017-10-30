@@ -7,6 +7,13 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
 
+    <string name="support_link"><a href="http://shreesaiconsultancy.in/">http://shreesaiconsultancy.in/</a></string>
+    <string name="support_phone1"><a href="tel:+919714944559">9714944559</a>
+    </string>
+    <string name="support_phone2">
+        <a href="tel:+919898599599">9898599599</a>
+    </string>
+
     <string name="slide_1_title">Welcome!</string>
     <string name="slide_1_desc">Now gadi on your finger tip!</string>
 
@@ -24,27 +31,27 @@
 
 
     <string-array name="vehicle_type">
-        <item>Select Vehicle Type*</item>
+        <item>Select Vehicle Type </item>
         <item>Luxury Taxi</item>
         <item>Loading Taxi</item>
         <item>Heavy Vehicle</item>
     </string-array>
 
     <string-array name="company_default">
-        <item>Select Vehicle Company*</item>
+        <item>Select Vehicle Company </item>
     </string-array>
 
     <string-array name="model_default">
-        <item>Select Vehicle Model*</item>
+        <item>Select Vehicle Model </item>
     </string-array>
 
 
     <string-array name="city_default">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
     </string-array>
 
     <string-array name="andra">
-        <item>Select Service City*</item>
+        <item>Select Service City</item>
         <item>Visakhapatnam</item>
         <item>Vijayawada</item>
         <item>Guntur</item>
@@ -80,7 +87,7 @@
 
 
     <string-array name="arunachal">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Changlang</item>
         <item>Dibang Valley</item>
         <item>East Kameng</item>
@@ -100,7 +107,7 @@
 
 
     <string-array name="assam">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Barpeta</item>
         <item>Bongaigaon</item>
         <item>Cachar</item>
@@ -120,7 +127,7 @@
 
 
     <string-array name="bihar">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Patna</item>
         <item>Gaya</item>
         <item>Bhagalpur</item>
@@ -153,7 +160,7 @@
 
 
     <string-array name="chhattisgarh">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Raipur</item>
         <item>Durg - Bhilai</item>
         <item>Bilaspur</item>
@@ -169,7 +176,7 @@
     </string-array>
 
     <string-array name="goa">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Bicholim</item>
         <item>Canacona</item>
         <item>Cuncolim</item>
@@ -188,7 +195,7 @@
 
 
     <string-array name="Gujarat">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Ahmedabad</item>
         <item>Surat</item>
         <item>Vadodara</item>
@@ -223,7 +230,7 @@
     </string-array>
 
     <string-array name="haryana">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Faridabad</item>
         <item>Gurgaon</item>
         <item>Panipat</item>
@@ -245,7 +252,7 @@
     </string-array>
 
     <string-array name="himachal">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Bilaspur</item>
         <item>Chamba</item>
         <item>Hamirpur</item>
@@ -261,7 +268,7 @@
     </string-array>
 
     <string-array name="jk">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Anantnag</item>
         <item>Badgam</item>
         <item>Bandipore</item>
@@ -288,7 +295,7 @@
 
 
     <string-array name="jharkhand">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Jamshedpur</item>
         <item>Dhanbad</item>
         <item>Ranchi</item>
@@ -303,7 +310,7 @@
     </string-array>
 
     <string-array name="karnataka">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Bagalkot</item>
         <item>Bangalore</item>
         <item>Belgaum</item>
@@ -334,7 +341,7 @@
     </string-array>
 
     <string-array name="Kerala">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Trivandrum</item>
         <item>Kochi</item>
         <item>Kozhikode</item>
@@ -389,7 +396,7 @@
     </string-array>
 
     <string-array name="mp">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Indore</item>
         <item>Bhopal</item>
         <item>Jabalpur</item>
@@ -425,7 +432,7 @@
     </string-array>
 
     <string-array name="maharastra">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Mumbai</item>
         <item>Pune</item>
         <item>Nagpur</item>
@@ -449,7 +456,7 @@
     </string-array>
 
     <string-array name="manipur">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Bishnupur</item>
         <item>Thoubal</item>
         <item>Porompat</item>
@@ -469,7 +476,7 @@
     </string-array>
 
     <string-array name="meghalaya">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Baghmara</item>
         <item>Cherrapunjee</item>
         <item>Jowai</item>
@@ -489,7 +496,7 @@
     </string-array>
 
     <string-array name="nagaland">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Dimapur</item>
         <item>Kiphire</item>
         <item>Kohima</item>
@@ -504,7 +511,7 @@
     </string-array>
 
     <string-array name="Orissa">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Anugul</item>
         <item>Balangir</item>
         <item>Baleshwar</item>
@@ -538,7 +545,7 @@
     </string-array>
 
     <string-array name="Punjab">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Chandigarh</item>
         <item>Ludhiana</item>
         <item>Amritsar</item>
@@ -559,7 +566,7 @@
     </string-array>
 
     <string-array name="Rajasthan">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Jaipur</item>
         <item>Jodhpur</item>
         <item>Kota</item>
@@ -585,7 +592,7 @@
     </string-array>
 
     <string-array name="Sikkim">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Gangtok</item>
         <item>Mangan</item>
         <item>Namchi</item>
@@ -593,7 +600,7 @@
     </string-array>
 
     <string-array name="tn">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Chennai</item>
         <item>Coimbatore</item>
         <item>Madurai</item>
@@ -621,7 +628,7 @@
     </string-array>
 
     <string-array name="Telangana">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Hyderabad</item>
         <item>Warangal</item>
         <item>Nizamabad</item>
@@ -637,7 +644,7 @@
     </string-array>
 
     <string-array name="Tripura">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Agartala</item>
         <item>Amarpur</item>
         <item>Belonia</item>
@@ -661,7 +668,7 @@
     </string-array>
 
     <string-array name="up">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Kanpur</item>
         <item>Lucknow</item>
         <item>Ghaziabad</item>
@@ -690,7 +697,7 @@
 
 
     <string-array name="Uttarakhand">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Dehradun</item>
         <item>Haridwar</item>
         <item>Roorkee</item>
@@ -720,7 +727,7 @@
 
 
     <string-array name="Bengal">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Kolkata</item>
         <item>Asansol</item>
         <item>Siliguri</item>
@@ -753,7 +760,7 @@
     </string-array>
 
     <string-array name="mizoram">
-        <item>Select Service City*</item>
+        <item>Select Service City </item>
         <item>Aizawl</item>
         <item>Champhai</item>
         <item>Kolasib</item>
@@ -766,7 +773,7 @@
 
 
     <string-array name="states">
-        <item>Select Service State*</item>
+        <item>Select Service State </item>
         <item>Andra Pradesh</item>
         <item>Arunachal Pradesh</item>
         <item>Assam</item>

@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.telephony"/>
+    <uses-feature android:name="android.hardware.telephony" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +21,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -29,11 +28,11 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
 
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2">
             <intent-filter>
@@ -43,62 +42,84 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.getStartedActivity"
+            android:name=".getStartedActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.vehicleHomeActivity"
+            android:name=".vehicleHomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.ownerRegistrationActivity"
+            android:name=".ownerRegistrationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.ownerLoginActivity"
+            android:name=".ownerLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.ownerHistoryActivity"
+            android:name=".ownerHistoryActivity"
             android:label="History"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.showVehiclesActivity"
+            android:name=".showVehiclesActivity"
             android:label="Vehicles"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.addVehicleDetailsActivity"
+            android:name=".addVehicleDetailsActivity"
             android:label="New Vehicle"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.userHomeActivity"
+            android:name=".userHomeActivity"
             android:label="Home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.uploadVehicleActivity"
-            android:label="Upload Documents"
+            android:name=".uploadVehicleActivity"
+            android:label="Upload Vehicle Image"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.customerLoginActivity"
+            android:name=".customerLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.cutomerRegisterActivity"
+            android:name=".cutomerRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.vehicleDetailsActivity"
+            android:name=".vehicleDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name="in.shreesaiconsultancy.android.obhadegadi.searchVehicleActivity"
-            android:screenOrientation="portrait"
+            android:name=".searchVehicleActivity"
             android:label="Get a ride"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".searchResultActivity"
+            android:label="Search Result"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".vehicleSearchDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".HomePageActivity"
+            android:label="O.. Bhade Gadi"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".supportActivity"
+            android:label="Support"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"/>
+        <activity android:name=".aboutActivity"
+            android:label="About"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme2"></activity>
     </application>
 

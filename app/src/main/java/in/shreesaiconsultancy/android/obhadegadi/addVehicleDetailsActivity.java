@@ -31,26 +31,16 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
         session = new sessionManager(this);
         userId = session.getUserId();
 
-
         perkm = (EditText) findViewById(R.id.et_pkm_charge);
-//        night = (EditText) findViewById(R.id.et_night_allowance);
-//        day = (EditText) findViewById(R.id.et_day_allowance);
-
 
         vehicleType = (Spinner) findViewById(R.id.sp_vehicle_type);
 
-        /* Initialize Vehicle Company Spinner */
         vehicleCompany = (Spinner) findViewById(R.id.sp_vehicle_company);
 
-        /* Initialize Vehicle Model Spinner */
         vehicleModel = (Spinner) findViewById(R.id.sp_vehicle_model);
 
-        /* Initialize city spinners */
         city = (Spinner) findViewById(R.id.sp_service_city);
 
-
-
-        /* Initialize Vehicle Type Spinner */
         adapterVType = ArrayAdapter.createFromResource(this, R.array.vehicle_type, R.layout.spinner_layout);
         adapterVType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         vehicleType.setAdapter(adapterVType);
@@ -62,7 +52,7 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
                 type = parent.getItemAtPosition(position).toString();
 
                 // Default
-                if (parent.getItemAtPosition(position).equals("Select Vehicle Type*")) {
+                if (parent.getItemAtPosition(position).equals("Select Vehicle Type")) {
                     adapterVCompany = ArrayAdapter.createFromResource(getBaseContext(), R.array.company_default, R.layout.spinner_layout);
 
                 }
@@ -106,7 +96,7 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
                 company = parent.getItemAtPosition(position).toString();
 
                 // Default
-                if (parent.getItemAtPosition(position).equals("Select Vehicle Company*")) {
+                if (parent.getItemAtPosition(position).equals("Select Vehicle Company")) {
                     adapterVModel = ArrayAdapter.createFromResource(getBaseContext(), R.array.model_default, R.layout.spinner_layout);
                 }
 
@@ -299,9 +289,6 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
         });
 
 
-
-
-        /* Initialize State Spinner */
         states = (Spinner) findViewById(R.id.sp_service_state);
         adapterState = ArrayAdapter.createFromResource(this, R.array.states, R.layout.spinner_layout);
         adapterState.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -315,7 +302,7 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
 
 
                 // Default
-                if (parent.getItemAtPosition(position).equals("Select Service State*")) {
+                if (parent.getItemAtPosition(position).equals("Select Service State")) {
                     adapterCity = ArrayAdapter.createFromResource(getBaseContext(), R.array.city_default, R.layout.spinner_layout);
                 }
 
@@ -499,46 +486,26 @@ public class addVehicleDetailsActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-    /* Add Vehicle Button */
-
     public void addVehicle(View view) {
 
         String perkmcharge = perkm.getText().toString();
-//        String nightallowance = night.getText().toString();
         String nightallowance = "1";
-//        String dayallowance = day.getText().toString();
         String dayallowance = "1";
 
-
-        //Validation and Logic
-
         if(perkmcharge.length() == 0
-                || type.equals("Select Vehicle Type*")
-                || company.equals("Select Vehicle Company*")
-                || model.equals("Select Vehicle Model*")
-                || cities.equals("Select Vehicle City*")
-                || state.equals("Select Vehicle State*")) {
+                || type.equals("Select Vehicle Type")
+                || company.equals("Select Vehicle Company")
+                || model.equals("Select Vehicle Model")
+                || cities.equals("Select Vehicle City")
+                || state.equals("Select Vehicle State")) {
             Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_LONG).show();
         } else {
             addVehicle add = new addVehicle(this);
             add.execute(dayallowance, nightallowance, perkmcharge, userId, type, company, model, cities, state);
         }
-
-//        Intent intent = new Intent(this, uploadVehicleActivity.class).putExtra("vehicleId", "7");
-//        startActivity(intent);
-
-
     }
 
     public void goback(View view) {
         finish();
     }
-
-
-
 }

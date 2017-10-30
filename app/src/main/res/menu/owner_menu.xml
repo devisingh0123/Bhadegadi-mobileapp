@@ -1,21 +1,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
+
     <item
-        android:id="@+id/action_history"
-        android:icon="@mipmap/ic_history_black_24dp"
-        android:onClick="history"
-        android:title="History"/>
+        android:id="@+id/action_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:onClick="go_home"
+        android:title="Home"/>
+    <item
+        android:id="@+id/action_serach"
+        android:icon="@drawable/blac_search"
+        android:onClick="go_search"
+        android:title="Search"/>
     <item
         android:id="@+id/action_vehicles"
         android:onClick="vehicles"
         android:icon="@mipmap/ic_local_shipping_black_24dp"
-        android:title="Vehicles"/>
+        android:title="My Vehicles"/>
     <item
         android:id="@+id/action_support"
         android:icon="@mipmap/ic_sms_black_24dp"
+        android:onClick="go_support"
         android:title="Support"/>
     <item
         android:id="@+id/action_about"
+        android:onClick="go_about"
         android:icon="@mipmap/ic_info_black_24dp"
         android:title="About"/>
     <item

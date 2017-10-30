@@ -45,7 +45,6 @@ public class vehicleAdapter extends RecyclerView.Adapter<vehicleAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Typeface Comfortaa = Typeface.createFromAsset(context.getAssets(), "fonts/Montserrat-Black.otf");
 
-
         final vehicleListItem listItem = listItems.get(position);
 
         holder.TVheading.setText(listItem.getHeading());
@@ -60,19 +59,16 @@ public class vehicleAdapter extends RecyclerView.Adapter<vehicleAdapter.ViewHold
             holder.verified.setTextColor(Color.RED);
         }
 
-
         if(listItem.getImageUrl().equals("true")) {
-            String url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/image/"+ listItem.getUserID() + "/" + listItem.getVehicleID() + "/VI.jpg";
+            String url = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com:8080/image/"+ listItem.getUserID() + "/" + listItem.getVehicleID() + "/VI.jpg";
 
             Picasso.with(context)
                     .load(url)
                     .into(holder.IVimage);
 
-
         } else {
             holder.IVimage.setImageResource(R.drawable.no_car);
         }
-
 
         if(listItem.getVehicleType().equals("Luxury Taxi")){
             holder.IVtype.setImageResource(R.drawable.luxury);
@@ -82,14 +78,13 @@ public class vehicleAdapter extends RecyclerView.Adapter<vehicleAdapter.ViewHold
             holder.IVtype.setImageResource(R.drawable.heavy);
         }
 
-
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String url;
 
                 if(listItem.getImageUrl().equals("true")) {
-                   url  = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com/image/" + listItem.getUserID() + "/" + listItem.getVehicleID() + "/VI.jpg";
+                   url  = "http://ec2-35-167-97-234.us-west-2.compute.amazonaws.com:8080/image/" + listItem.getUserID() + "/" + listItem.getVehicleID() + "/VI.jpg";
                 } else {
                     url = "true";
                 }
@@ -106,12 +101,8 @@ public class vehicleAdapter extends RecyclerView.Adapter<vehicleAdapter.ViewHold
                 intent.putExtras(extras);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
-
             }
         });
-
-
-
     }
 
     @Override

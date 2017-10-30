@@ -17,7 +17,6 @@ public class ownerRegistrationActivity extends AppCompatActivity {
         TextView pageTitle, signinText;
         EditText fullName, email, phone, password, cpassword, companyName, pincode;
         Button register, signinBtn;
-        //    SharedPreferences sharedpreferences;
         ProgressBar progressBar;
         AlertDialog alertDialog;
 
@@ -30,10 +29,6 @@ public class ownerRegistrationActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_owner_registration);
-
-
-//        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
 
             pageTitle = (TextView) findViewById(R.id.tv_title);
             fullName = (EditText) findViewById(R.id.et_name);
@@ -88,30 +83,18 @@ public class ownerRegistrationActivity extends AppCompatActivity {
                         }
                     } else {
                         Toast.makeText(ownerRegistrationActivity.this, "Invalid Phone Number", Toast.LENGTH_LONG).show();
-
                     }
 
                 } else {
                     Toast.makeText(ownerRegistrationActivity.this,"Password is too short!", Toast.LENGTH_LONG).show();
 
-                }
-
             } else {
-
-                Toast.makeText(ownerRegistrationActivity.this, "Password don't match!",
-                        Toast.LENGTH_LONG).show();
-
+                Toast.makeText(ownerRegistrationActivity.this, "Password don't match!", Toast.LENGTH_LONG).show();
             }
-
-
         }
 
 
         public void loginClicked(View view) {
-
-
-
-
             Intent intent = new Intent(ownerRegistrationActivity.this, ownerLoginActivity.class);
             startActivity(intent);
         }
